@@ -1,8 +1,26 @@
 <section class="header">
     <h1>Irina</h1>
-    <div>
-        <a href="#aboutme">About me</a>
-        <a href="#skills">Skills</a>
-        <a href="#portfolio">Portfolio</a>
-    </div>
+    <nav>
+        <a
+            class="nav-link"
+            [class.active]="activeLink === 'start'"
+            (click)="setActive('start')"
+            href="#aboutme"
+            >About me</a
+        >
+        <a
+            class="nav-link"
+            [class.active]="activeLink === 'start'"
+            (click)="setActive('start')"
+            href="#skills"
+            >Skills</a
+        >
+        <a
+            class="nav-link"
+            [class.active]="activeLink === 'start'"
+            (click)="setActive('start')"
+            href="#portfolio"
+            >Portfolio</a
+        >
+    </nav>
 </section>
