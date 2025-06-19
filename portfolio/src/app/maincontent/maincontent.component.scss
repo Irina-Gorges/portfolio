@@ -1,4 +1,4 @@
-section {
+.me_Section {
     display: flex;
     align-items: center;
     width: 100%;
@@ -41,6 +41,42 @@ section {
             letter-spacing: 1px;
             line-height: 35px;
             color: #9747ff;
+        }
+    }
+
+    .titleBtn {
+        position: relative;
+        right: 140px;
+        top: 200px;
+
+        .talk_Btn {
+            font-size: 23px;
+            font-weight: 300;
+            outline: none;
+            background-color: #70e61c;
+            width: 165px;
+            height: 58px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: none;
+
+            &:hover {
+                transform: scale(1.15);
+                background-color: #9747ff;
+                transition: 125ms ease-in-out;
+            }
+        }
+    }
+
+    > .shadow_Section {
+        position: relative;
+        width: 100%;
+        _height: 60dvh;
+        z-index: -4;
+
+        > .bg_Shape {
+            max-width: 100%;
+            bottom: 200px;
         }
     }
 }
