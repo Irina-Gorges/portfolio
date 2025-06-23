@@ -3,20 +3,24 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0 100px;
+    padding-left: 100px;
 
     .left-sec {
+        width: 480px;
+        margin-right: 30px;
         > h2 {
             font-size: 90px;
         }
 
         > .text-sec {
-            text-align: start;
+            text-align: justify;
             gap: 40px;
         }
     }
 
     > .me {
+        display: flex;
+        justify-content: flex-end;
         > img {
             width: 459px;
             height: 459px;

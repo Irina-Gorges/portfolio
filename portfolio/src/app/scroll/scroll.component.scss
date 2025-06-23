@@ -1,5 +1,9 @@
 .scroll_container {
     gap: 0;
+    background-image: url(../../../public/assets/images/background/shape.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
     > .line {
         min-width: 100px;
@@ -13,7 +17,6 @@
         display: flex;
         justify-content: space-between;
         align-items: end;
-        max-width: 1920px;
         width: 100%;
         padding: 80px 40px 160px;
     }
