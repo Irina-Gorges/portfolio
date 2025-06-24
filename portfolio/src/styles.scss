@@ -8,7 +8,13 @@
     background-color: #141d2f;
     color: white;
     font-family: "Poppins", sans-serif;
+    list-style: none;
 }
+
+$violett: #9747ff;
+$green: #70e61c;
+
+
 
 /* poppins-100 - latin */
 @font-face {
@@ -97,4 +103,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+header,
+section,
+footer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .content {
+        width: 100%;
+        max-width: 1920px;
+    }
 }
