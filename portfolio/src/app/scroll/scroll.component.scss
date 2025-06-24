@@ -1,34 +1,28 @@
 .scroll_container {
-    gap: 0;
-    background-image: url(../../../public/assets/images/background/shape.png);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-
-    > .line {
-        min-width: 100px;
-        width: 100%;
+    .line {
+        min-width: 10rem;
+        width: 10rem;
         height: 4px;
         flex: 1;
         background-color: #9747ff;
     }
 
-    > .socialmedia {
+    .socialmedia {
         display: flex;
         justify-content: space-between;
         align-items: end;
         width: 100%;
-        padding: 80px 40px 160px;
+        padding: 8rem 4rem 16rem;
     }
     .linkBox {
-        gap: 42px;
-        margin-bottom: 20px;
+        gap: 4rem;
+        margin-bottom: 2rem;
     }
 
     .scrollInfo {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 10px;
+        gap: 1rem;
     }
 }

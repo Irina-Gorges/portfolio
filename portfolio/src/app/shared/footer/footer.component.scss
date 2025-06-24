@@ -1,0 +1,17 @@
+@import "../../../styles.scss";
+@import "../mixins.scss";
+
+footer {
+    @include flex();
+    .content {
+        .logo-impress {
+            width: 10rem;
+            height: 4rem;
+
+            .logo_footer {
+                width: 10rem;
+                height: 4rem;
+            }
+        }
+    }
+}

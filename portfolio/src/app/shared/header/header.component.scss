@@ -1,60 +1,58 @@
-@import url(../../../styles.scss);
+@import "../../../styles.scss";
+@import "../../shared/mixins.scss";
 
-.header {
-    width: 100%;
-    height: 110px;
-    padding: 37px 100px;
-    _display: flex;
-    _align-items: center;
-    justify-content: space-between;
+$violett: #9747ff;
+$green: #70e61c;
+
+header {
+    height: 10rem;
+    padding: 3rem 8rem;
     position: sticky;
-    > h1 {
-        font-size: 40px;
-        font-weight: 600;
-    }
-    nav {
-        width: 350px;
-        height: 55px;
-        _display: flex;
-        _align-items: center;
+    top: 0;
+    z-index: 4;
+
+    .content {
+        display: flex;
         justify-content: space-between;
 
-        > a {
-            font-size: 24px;
-            font-weight: 300;
-            cursor: pointer;
+        .logo {
+            width: 9rem;
+            height: 3rem;
+        }
 
-            &:hover {
-                color: #70e61c;
+        nav {
+            width: 35rem;
+            height: 5rem;
+
+            ul {
+                li {
+                    a {
+                        font-size: 24px;
+                        font-weight: 300;
+                        cursor: pointer;
+
+                        &:hover {
+                            color: $green;
+                        }
+                    }
+                }
+            }
+
+            .nav-link::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 4px;
+                width: 0;
+                text-underline-offset: 8px;
+                background-color: $violett;
+                transition: width 0.3s ease;
+            }
+
+            .nav-link:hover::after {
+                width: 50%; /* beim Hover, optional */
             }
         }
-
-        .nav-link::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 4px;
-            width: 0;
-            text-underline-offset: 8px;
-            background-color: #9747ff;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 50%; /* beim Hover, optional */
-        }
-
-        // .nav-link.active::after {
-        //     width: 50%; /* bleibt dauerhaft */
-        // }
-
-        // &:hover {
-        //     color: #9747ff;
-        //     text-decoration: underline;
-        //     text-underline-offset: 8px;
-        //     text-decoration-thickness: 4px;
-        //     text-underline-position: left;
-        // }
     }
 }

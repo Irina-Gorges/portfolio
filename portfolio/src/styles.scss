@@ -14,8 +14,7 @@
 $violett: #9747ff;
 $green: #70e61c;
 
-
-
+//#region Fonts
 /* poppins-100 - latin */
 @font-face {
     font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -98,12 +97,7 @@ $green: #70e61c;
     src: url("../public/assets/fonts/poppins-v23-latin-900.woff2")
         format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
-.flex_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+//#endregion
 
 header,
 section,
