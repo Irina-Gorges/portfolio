@@ -5,35 +5,34 @@ $violett: #9747ff;
 $green: #70e61c;
 
 header {
-    height: 10rem;
-    padding: 3rem 8rem;
+    height: 6rem;
     position: sticky;
+    background-color: #141d2f;
     top: 0;
     z-index: 4;
 
     .content {
-        display: flex;
-        justify-content: space-between;
+        @include flex($justify: space-between, $align: center);
+        height: 5rem;
+        padding: 3rem 3rem;
 
         .logo {
-            width: 9rem;
-            height: 3rem;
+            width: 8.5rem;
+            height: 2.7rem;
         }
 
         nav {
             width: 35rem;
-            height: 5rem;
 
             ul {
-                li {
-                    a {
-                        font-size: 24px;
-                        font-weight: 300;
-                        cursor: pointer;
+                @include flex($justify: space-evenly);
+                a {
+                    font-size: 24px;
+                    font-weight: 300;
+                    cursor: pointer;
 
-                        &:hover {
-                            color: $green;
-                        }
+                    &:hover {
+                        color: $green;
                     }
                 }
             }
