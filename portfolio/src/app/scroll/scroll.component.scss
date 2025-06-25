@@ -2,11 +2,7 @@
 @import "../shared/mixins.scss";
 
 section {
-    // background-image: url("../../../public/assets/images/background/shape.png");
-    // background-repeat: no-repeat;
-    // background-position: center;
-    // background-size: cover;
-
+    
     .content {
         @include flex($justify: space-between, $align: center);
 
@@ -21,7 +17,7 @@ section {
 
         .socialmedia {
             @include flex($justify: space-between, $align: center);
-            width: 100%;
+            width: 90%;
             padding: 8rem 4rem 16rem;
         }
         .linkBox {
