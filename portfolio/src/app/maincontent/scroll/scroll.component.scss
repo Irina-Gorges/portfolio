@@ -1,28 +1,26 @@
-@import "../../styles.scss";
-@import "../shared/mixins.scss";
+@import "../../../styles.scss";
+@import "../../shared/mixins.scss";
 
 section {
-    
     .content {
         @include flex($justify: space-between, $align: center);
 
-        .line {
-            @include flex();
-            min-width: 10rem;
-            width: 10rem;
-            height: 4px;
-            flex: 1;
-            background-color: #9747ff;
-        }
-
         .socialmedia {
             @include flex($justify: space-between, $align: center);
-            width: 90%;
-            padding: 8rem 4rem 16rem;
+            width: 100%;
+            padding: 4rem 4rem 8rem 0;
         }
         .linkBox {
             @include flex($align: center);
             gap: 2rem;
+
+            .line {
+                max-width: 8rem;
+                width: 8rem;
+                height: 4px;
+                flex: 1;
+                background-color: #9747ff;
+            }
         }
 
         .scrollInfo {

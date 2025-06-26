@@ -2,6 +2,7 @@
 @import "../../shared/mixins.scss";
 
 section {
+    margin-bottom: 8rem;
     .content {
         display: flex;
         justify-content: space-between;

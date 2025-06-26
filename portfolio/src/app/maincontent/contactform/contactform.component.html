@@ -1,0 +1,43 @@
+<section>
+    <div class="content">
+        <div class="line_contact">
+            <h2>Contact</h2>
+        </div>
+
+        <div class="contact-text">
+            <h3>Got a problem to solve?</h3>
+            <p>
+                Contact me through this form, I am interested in hearing from
+                you, knowing your ideas and contributing to your projects with
+                my work.
+            </p>
+            <p>Need a Frontend Developer? <strong>Contact me!</strong></p>
+        </div>
+        <div class="container">
+            <form [(ngModel)]="contactData.name" (ngSubmit)="onSubmit()">
+                <label for="yname"></label>
+                <input
+                    type="text"
+                    id="yname"
+                    name="yourname"
+                    placeholder="Your name"
+                />
+                <label [(ngModel)]="contactData.email" for="email"></label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Your email"
+                />
+                <label [(ngModel)]="contactData.message" for="message"></label>
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write something.."
+                ></textarea>
+
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,19 +1,30 @@
 @import "../../../styles.scss";
+@import "../../shared/mixins.scss";
 
-.btn-Skills {
-    font-size: 23px;
-    font-weight: 300;
-    outline: none;
-    background-color: #70e61c;
-    width: 165px;
-    height: 58px;
-    border-radius: 15px;
-    cursor: pointer;
-    border: none;
+section {
+    .content {
+        @include flex($justify: space-evenly,$align: center);
 
-    &:hover {
-        transform: scale(1.15);
-        background-color: #9747ff;
-        transition: 125ms ease-in-out;
+        .skill-icons{
+             @include flex($align: center);
+
+        }
+        .btn-Skills {
+            font-size: 23px;
+            font-weight: 300;
+            outline: none;
+            background-color: #70e61c;
+            width: 165px;
+            height: 58px;
+            border-radius: 15px;
+            cursor: pointer;
+            border: none;
+
+            &:hover {
+                transform: scale(1.15);
+                background-color: #9747ff;
+                transition: 125ms ease-in-out;
+            }
+        }
     }
 }
