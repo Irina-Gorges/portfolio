@@ -2,9 +2,9 @@
 @import "../../shared/mixins.scss";
 
 section {
-    // @include flex($justify: space-between);
+    
     .content {
-        @include flex();
+        @include flex($justify: space-between, $align: center);
 
         .line_contact {
             max-width: 4rem;
@@ -17,11 +17,14 @@ section {
                 font-size: 90px;
                 margin-bottom: 2rem;
             }
-        }
 
-        .contact-text {
-            text-align: justify;
-            gap: 2rem;
+            .contact-text {
+                width: 45rem;
+               p {
+                 text-align: justify;
+                gap: 2rem;
+               }
+            }
         }
 
         .container {

@@ -3,11 +3,10 @@
 
 section {
     .content {
-        @include flex($justify: space-evenly,$align: center);
+        @include flex($justify: space-evenly, $align: center);
 
-        .skill-icons{
-             @include flex($align: center);
-
+        .skill-icons {
+            @include flex($align: center);
         }
         .btn-Skills {
             font-size: 23px;

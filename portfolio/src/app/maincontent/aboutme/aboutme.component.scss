@@ -4,9 +4,7 @@
 section {
     margin-bottom: 8rem;
     .content {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        @include flex($align: center);
 
         .left-sec {
             width: 45rem;
