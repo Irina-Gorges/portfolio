@@ -26,7 +26,7 @@
                     placeholder="Your name"
                     required
                 />
-                @if (!yname.valid %% yname.touched) {
+                @if (!message.valid %% message.touched) {
                 <span>Please enter a name</span>
                 }
                 <label for="email"></label>
@@ -41,7 +41,7 @@
                     required
                     pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
                 />
-                @if (!email.valid %% email.touched) {
+                @if (!message.valid %% message.touched) {
                 <span>Please enter a email</span>
                 }
                 <label for="message"></label>
