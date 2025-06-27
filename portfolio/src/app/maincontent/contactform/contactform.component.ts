@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { NgIf } from '@angular/common';
 
 @Component({
     selector: 'app-contactform',
-    imports: [FormsModule],
+    imports: [FormsModule, NgIf],
     templateUrl: './contactform.component.html',
     styleUrl: './contactform.component.scss',
 })

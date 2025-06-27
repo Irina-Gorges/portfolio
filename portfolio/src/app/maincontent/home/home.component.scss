@@ -3,7 +3,9 @@
 
 section {
     .content {
-        @include flex($align: center);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
 
         img {
             width: 31rem;

@@ -4,11 +4,14 @@
 section {
     margin-bottom: 8rem;
     .content {
-        @include flex($align: center);
-
+        // @include flex($align: center);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         .left-sec {
             width: 45rem;
             margin-right: 3rem;
+            padding-left: 3rem;
             h2 {
                 font-size: 90px;
             }
@@ -23,14 +26,14 @@ section {
             display: flex;
             justify-content: flex-end;
             img {
-                width: 30rem;
-                height: 30rem;
+                width: 26rem;
+                height: 26rem;
                 border: 4px solid #70e61c;
                 border-radius: 50%;
             }
         }
         .green-line {
-            min-width: 12rem;
+            width: 6rem;
             height: 4px;
             flex: 1;
             background-color: #70e61c;

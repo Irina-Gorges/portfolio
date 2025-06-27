@@ -3,26 +3,87 @@
 
 section {
     .content {
-        @include flex($justify: space-evenly, $align: center);
+        display: flex;
+        justify-content: center;
+        gap: 10rem;
 
         .skill-icons {
             @include flex($align: center);
-        }
-        .btn-Skills {
-            font-size: 23px;
-            font-weight: 300;
-            outline: none;
-            background-color: #70e61c;
-            width: 165px;
-            height: 58px;
-            border-radius: 15px;
-            cursor: pointer;
-            border: none;
+            flex-wrap: wrap;
+            gap: 5rem;
+            font-size: 16px;
+            font-weight: bold;
+            width: 30rem;
+            height: 12rem;
+            max-width: 45%;
 
-            &:hover {
-                transform: scale(1.15);
-                background-color: #9747ff;
-                transition: 125ms ease-in-out;
+            div {
+                @include flex($direction: column, $align: center);
+
+                img:hover {
+                    animation: jump 1s ease infinite;
+
+                    @keyframes jump {
+                        0%,
+                        50%,
+                        100% {
+                            transform: translateY(0);
+                        }
+
+                        40% {
+                            transform: translateY(-30px);
+                        }
+
+                        80% {
+                            transform: translateY(-15px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .skill-text {
+            @include flex($direction: column);
+            width: 38rem;
+            text-align: end;
+            padding-right: 8rem;
+
+            .h2-line {
+                width: 30rem;
+                display: flex;
+                flex-direction: column;
+                h2 {
+                    _left: 4rem;
+                    font-size: 90px;
+
+                    .line {
+                        max-width: 5rem;
+                        width: 4rem;
+                        height: 4px;
+                        flex: 1;
+                        background-color: #9747ff;
+                    }
+                }
+            }
+
+            .btn-Skills {
+                left: 10rem;
+                margin-top: 2rem;
+                font-size: 23px;
+                font-weight: 300;
+                outline: none;
+                background-color: #70e61c;
+                width: 165px;
+                height: 58px;
+                border-radius: 15px;
+                cursor: pointer;
+                border: none;
+
+                &:hover {
+                    transform: scale(1.15);
+                    background-color: #9747ff;
+                    transition: 125ms ease-in-out;
+                }
             }
         }
     }

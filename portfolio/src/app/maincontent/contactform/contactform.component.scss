@@ -2,10 +2,10 @@
 @import "../../shared/mixins.scss";
 
 section {
-    
     .content {
-        @include flex($justify: space-between, $align: center);
-
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         .line_contact {
             max-width: 4rem;
             width: 4rem;
@@ -17,31 +17,35 @@ section {
                 font-size: 90px;
                 margin-bottom: 2rem;
             }
+        }
 
-            .contact-text {
-                width: 45rem;
-               p {
-                 text-align: justify;
+        .contact-text {
+            width: 45rem;
+            p {
+                text-align: justify;
                 gap: 2rem;
-               }
             }
         }
 
         .container {
+            span {
+                font-weight: 200;
+                font-size: 16px;
+                color: #e61c40;
+            }
             border-radius: 5px;
-            background-color: #141d2f;
             padding: 20px;
 
             input[type="text"],
             select,
             textarea {
-                width: 100%;
+                width: 80%;
                 /* Full width */
                 padding: 12px;
                 /* Some padding */
-                border: 1px solid #ccc;
+                border: 1px solid #9747ff;
                 /* Gray border */
-                border-radius: 4px;
+                border-radius: 10px;
                 /* Rounded borders */
                 box-sizing: border-box;
                 /* Make sure that padding and width stays in place */
@@ -51,20 +55,45 @@ section {
                 /* Bottom margin */
                 resize: vertical;
                 /* Allow the user to vertically resize the textarea (not horizontally) */
-                color: black;
+                background-color: #141d2f;
+
+                &:focus,
+                &:hover {
+                    border: 1px solid #70e61c;
+                }
+            }
+
+            input[type="email"] {
+                width: 80%;
+                /* Full width */
+                padding: 12px;
+                /* Some padding */
+                border: 1px solid #9747ff;
+                /* Gray border */
+                border-radius: 10px;
+                /* Rounded borders */
+                box-sizing: border-box;
+                /* Make sure that padding and width stays in place */
+                margin-top: 6px;
+                /* Add a top margin */
+                margin-bottom: 16px;
+                background-color: #141d2f;
+                outline: none;
+
+                &:focus,
+                &:hover {
+                    border: 1px solid #70e61c;
+                }
             }
 
             input[type="submit"] {
-                background-color: #04aa6d;
-                color: rgb(0, 0, 0);
-                padding: 12px 20px;
+                font-size: 23px;
+                background-color: #b6b6b6;
+                color: rgb(255, 255, 255);
+                padding: 10px 20px;
                 border: none;
-                border-radius: 4px;
+                border-radius: 10px;
                 cursor: pointer;
-            }
-
-            input[type="submit"]:hover {
-                background-color: #45a049;
             }
         }
     }
