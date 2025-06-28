@@ -10,6 +10,7 @@ header {
     background-color: #141d2f;
     top: 0;
     z-index: 4;
+    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.308));
 
     .content {
         @include flex($justify: space-between, $align: center);

@@ -2,15 +2,30 @@
 @import "../mixins.scss";
 
 footer {
+    height: 10rem;
     .content {
-        // @include flex();
+        width: 90%;
+
+        @include flex($justify: space-between, $align: center);
         .logo-impress {
             width: 10rem;
             height: 4rem;
 
             .logo_footer {
                 width: 10rem;
-                height: 4rem;
+                height: 3rem;
+            }
+        }
+
+        span {
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .social-footer {
+            width: 15rem;
+            img {
+                margin-right: 2rem;
             }
         }
     }

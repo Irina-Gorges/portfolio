@@ -67,13 +67,10 @@ section {
     .shape {
         @include flex($justify: center);
         z-index: -1;
-        left: 0;
-        right: 0;
         height: 50rem;
         position: absolute;
         top: 20rem;
         width: 100%;
-        _min-width: 200rem;
         overflow-y: hidden;
 
         img {
