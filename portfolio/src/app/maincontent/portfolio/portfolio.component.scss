@@ -1,0 +1,56 @@
+@import "../../../styles.scss";
+@import "../../shared/mixins.scss";
+
+section {
+    .content {
+        .headline-portfolio {
+            .left {
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                gap: 2rem;
+
+                .short-line {
+                    max-width: 8rem;
+                    width: 4rem;
+                    height: 4px;
+                    flex: 1;
+                    background-color: #9747ff;
+                    margin-right: 1rem;
+                }
+
+                h2 {
+                    font-size: 90px;
+                    margin-right: 1rem;
+                }
+
+                .long-line {
+                    max-width: 26rem;
+                    width: 28rem;
+                    height: 4px;
+                    flex: 1;
+                    background-color: #9747ff;
+                }
+            }
+
+            .right {
+                @include flex($direction: column);
+
+                img {
+                    width: 20rem;
+                }
+
+                h3 {
+                    font-size: 32px;
+                    color: #9747ff;
+                }
+
+                h4 {
+                    font-size: 23px;
+                    font-weight: 400;
+                    color: #70e61c;
+                }
+            }
+        }
+    }
+}

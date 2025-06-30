@@ -2,10 +2,11 @@
 @import "../../shared/mixins.scss";
 
 section {
+    margin-bottom: 6rem;
     .content {
         display: flex;
         justify-content: center;
-        gap: 10rem;
+        gap: 18rem;
 
         .skill-icons {
             @include flex($align: center);

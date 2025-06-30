@@ -48,4 +48,11 @@ export class ContactFormComponent {
             ngForm.resetForm();
         }
     }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+        });
+    }
 }
