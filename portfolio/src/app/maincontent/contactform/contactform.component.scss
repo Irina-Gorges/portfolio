@@ -3,6 +3,7 @@
 
 section {
     .content {
+        border: 3px solid grey;
         display: flex;
         margin-top: 8rem;
         .left {
@@ -24,6 +25,8 @@ section {
             }
 
             .over-sec {
+                width: 100%;
+                border: 3px solid skyblue;
                 display: flex;
                 padding: 0 6rem;
                 margin-top: 4rem;
@@ -44,122 +47,124 @@ section {
                         }
                     }
                 }
-            }
+                .container-right {
+                    width: 100%;
+                    border: 3px solid orange;
+                    form {
+                        border: 4px solid yellow;
+                        border-radius: 5px;
+                        padding-right: 4rem;
 
-            .container-right {
-                form {
-                    border-radius: 5px;
-                    padding-right: 4rem;
+                        span {
+                            font-weight: 200;
+                            font-size: 16px;
+                            color: #e61c40;
+                        }
 
-                    span {
-                        font-weight: 200;
-                        font-size: 16px;
-                        color: #e61c40;
-                    }
+                        .input-icon-wrapper {
+                            position: relative;
 
-                    .input-icon-wrapper {
-                        _position: relative;
+                            input,
+                            select,
+                            textarea {
+                                width: 100%;
+                                padding: 12px;
+                                padding-right: 2.5rem; // Platz für Icon
+                                border: 1px solid #9747ff;
+                                border-radius: 10px;
+                                box-sizing: border-box;
+                                margin-top: 6px;
+                                margin-bottom: 16px;
+                                resize: vertical;
+                                background-color: #141d2f;
+                                outline: none;
+                                transition: border-color 0.3s;
+                            }
 
-                        input,
-                        textarea {
-                            width: 100%;
-                            padding: 12px;
-                            padding-right: 2.5rem; // Platz für Icon
-                            border: 1px solid #9747ff;
+                            input:focus,
+                            textarea:focus,
+                            input:hover,
+                            textarea:hover {
+                                border: 1px solid #70e61c;
+                            }
+
+                            input.error,
+                            textarea.error {
+                                border: 1px solid #e61c40 !important;
+                            }
+
+                            input.success,
+                            textarea.success {
+                                border: 1px solid #70e61c !important;
+                            }
+
+                            .icon-indicator {
+                                position: absolute;
+                                right: 12px;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                width: 20px;
+                                height: 20px;
+                                pointer-events: none;
+                            }
+                        }
+
+                        input[type="email"] {
+                            @extend input; // Reuse the general input styles
+                        }
+
+                        input[type="submit"] {
+                            _width: 45%;
+                            text-align: center;
+                            justify-content: center;
+                            top: 2rem;
+                            font-size: 23px;
+                            background-color: #b6b6b6;
+                            color: rgb(255, 255, 255);
+                            padding: 10px 20px;
+                            border: none;
                             border-radius: 10px;
-                            box-sizing: border-box;
-                            margin-top: 6px;
-                            margin-bottom: 16px;
-                            resize: vertical;
-                            background-color: #141d2f;
-                            outline: none;
-                            transition: border-color 0.3s;
-                        }
-
-                        input:focus,
-                        textarea:focus,
-                        input:hover,
-                        textarea:hover {
-                            border: 1px solid #70e61c;
-                        }
-
-                        input.error,
-                        textarea.error {
-                            border: 1px solid #e61c40 !important;
-                        }
-
-                        input.success,
-                        textarea.success {
-                            border: 1px solid #70e61c !important;
-                        }
-
-                        .icon-indicator {
-                            position: absolute;
-                            right: 12px;
-                            top: 50%;
-                            transform: translateY(-50%);
-                            width: 20px;
-                            height: 20px;
-                            pointer-events: none;
+                            cursor: pointer;
+                            margin-bottom: 6rem;
                         }
                     }
 
-                    input[type="email"] {
-                        @extend input; // Reuse the general input styles
-                    }
+                    .scroll-up {
+                        display: flex;
+                        justify-content: end;
+                        padding: 0 4rem 4rem 0;
 
-                    input[type="submit"] {
-                        _width: 45%;
-                        text-align: center;
-                        justify-content: center;
-                        top: 2rem;
-                        font-size: 23px;
-                        background-color: #b6b6b6;
-                        color: rgb(255, 255, 255);
-                        padding: 10px 20px;
-                        border: none;
-                        border-radius: 10px;
-                        cursor: pointer;
-                        margin-bottom: 6rem;
-                    }
-                }
-
-               
-                .scroll-up {
-                    display: flex;
-                    justify-content: end;
-                    padding: 0 4rem 4rem 0;
-
-                    #scrollUpBtn {
-                        position: relative;
-                        width: 38px;
-                        height: 38px;
-                        border: none;
-                        background: none;
-                        cursor: pointer;
-
-                        .default-img,
-                        .hover-img {
-                            position: absolute;
+                        #scrollUpBtn {
+                            position: relative;
                             width: 38px;
                             height: 38px;
-                            transition: opacity 0.25s ease;
-                        }
+                            border: none;
+                            background: none;
+                            cursor: pointer;
 
-                        .default-img {
-                            opacity: 1;
-                        }
+                            .default-img,
+                            .hover-img {
+                                position: absolute;
+                                width: 38px;
+                                height: 38px;
+                                transition: opacity 0.25s ease;
+                            }
 
-                        .hover-img {
-                            opacity: 0;
-                        }
+                            .default-img {
+                                opacity: 1;
+                            }
 
-                        &:hover .default-img {
-                            opacity: 0;
-                        }
+                            .hover-img {
+                                opacity: 0;
+                            }
 
-                        &:hover .hover-img {
-                            opacity: 1;
+                            &:hover .default-img {
+                                opacity: 0;
+                            }
+
+                            &:hover .hover-img {
+                                opacity: 1;
+                            }
                         }
                     }
                 }
