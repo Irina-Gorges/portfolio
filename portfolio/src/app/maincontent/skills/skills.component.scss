@@ -5,18 +5,18 @@ section {
     margin-bottom: 6rem;
     .content {
         display: flex;
-        justify-content: center;
-        gap: 18rem;
+        justify-content: space-between;
+        padding-left: 6rem;
 
         .skill-icons {
             @include flex($align: center);
             flex-wrap: wrap;
             gap: 5rem;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: 500;
             width: 30rem;
             height: 12rem;
-            max-width: 45%;
+            _max-width: 45%;
 
             div {
                 @include flex($direction: column, $align: center);
@@ -45,25 +45,26 @@ section {
 
         .skill-text {
             @include flex($direction: column);
-            width: 38rem;
+            width: 40rem;
             text-align: end;
-            padding-right: 8rem;
+            padding-right: 6rem;
 
             .h2-line {
-                width: 30rem;
+                width: 50rem;
                 display: flex;
-                flex-direction: column;
-                h2 {
-                    _left: 4rem;
-                    font-size: 90px;
+                align-items: center;
 
-                    .line {
-                        max-width: 5rem;
-                        width: 4rem;
-                        height: 4px;
-                        flex: 1;
-                        background-color: #9747ff;
-                    }
+                h2 {
+                    font-size: 90px;
+                    margin-right: 2rem;
+                }
+
+                .line {
+                    max-width: 8rem;
+                    width: 4rem;
+                    height: 4px;
+                    flex: 1;
+                    background-color: #9747ff;
                 }
             }
 

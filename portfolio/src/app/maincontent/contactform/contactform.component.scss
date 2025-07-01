@@ -4,7 +4,7 @@
 section {
     .content {
         display: flex;
-
+        margin-top: 8rem;
         .left {
             .headline {
                 display: flex;
@@ -25,13 +25,14 @@ section {
 
             .over-sec {
                 display: flex;
+                padding: 0 6rem;
                 margin-top: 4rem;
                 .container-left {
                     padding-left: 4rem;
                     .text_container {
                         .contact-text {
                             width: 35rem;
-                            margin-right: 10rem;
+                            margin-right: 6rem;
 
                             h3 {
                                 font-size: 32px;
@@ -47,70 +48,71 @@ section {
 
             .container-right {
                 form {
+                    border-radius: 5px;
+                    padding-right: 4rem;
+
                     span {
                         font-weight: 200;
                         font-size: 16px;
                         color: #e61c40;
                     }
-                    border-radius: 5px;
-                    padding-right: 4rem;
 
-                    input[type="text"],
-                    select,
-                    textarea {
-                        width: 100%;
-                        /* Full width */
-                        padding: 12px;
-                        /* Some padding */
-                        border: 1px solid #9747ff;
-                        /* Gray border */
-                        border-radius: 10px;
-                        /* Rounded borders */
-                        box-sizing: border-box;
-                        /* Make sure that padding and width stays in place */
-                        margin-top: 6px;
-                        /* Add a top margin */
-                        margin-bottom: 16px;
-                        /* Bottom margin */
-                        resize: vertical;
-                        /* Allow the user to vertically resize the textarea (not horizontally) */
-                        background-color: #141d2f;
+                    .input-icon-wrapper {
+                        _position: relative;
 
-                        &:focus,
-                        &:hover {
+                        input,
+                        textarea {
+                            width: 100%;
+                            padding: 12px;
+                            padding-right: 2.5rem; // Platz für Icon
+                            border: 1px solid #9747ff;
+                            border-radius: 10px;
+                            box-sizing: border-box;
+                            margin-top: 6px;
+                            margin-bottom: 16px;
+                            resize: vertical;
+                            background-color: #141d2f;
+                            outline: none;
+                            transition: border-color 0.3s;
+                        }
+
+                        input:focus,
+                        textarea:focus,
+                        input:hover,
+                        textarea:hover {
                             border: 1px solid #70e61c;
+                        }
+
+                        input.error,
+                        textarea.error {
+                            border: 1px solid #e61c40 !important;
+                        }
+
+                        input.success,
+                        textarea.success {
+                            border: 1px solid #70e61c !important;
+                        }
+
+                        .icon-indicator {
+                            position: absolute;
+                            right: 12px;
+                            top: 50%;
+                            transform: translateY(-50%);
+                            width: 20px;
+                            height: 20px;
+                            pointer-events: none;
                         }
                     }
 
                     input[type="email"] {
-                        width: 100%;
-                        /* Full width */
-                        padding: 12px;
-                        /* Some padding */
-                        border: 1px solid #9747ff;
-                        /* Gray border */
-                        border-radius: 10px;
-                        /* Rounded borders */
-                        box-sizing: border-box;
-                        /* Make sure that padding and width stays in place */
-                        margin-top: 6px;
-                        /* Add a top margin */
-                        margin-bottom: 16px;
-                        background-color: #141d2f;
-                        outline: none;
-
-                        &:focus,
-                        &:hover {
-                            border: 1px solid #70e61c;
-                        }
+                        @extend input; // Reuse the general input styles
                     }
 
                     input[type="submit"] {
-                        width: 45%;
+                        _width: 45%;
                         text-align: center;
                         justify-content: center;
                         top: 2rem;
-                        _left: 10rem;
                         font-size: 23px;
                         background-color: #b6b6b6;
                         color: rgb(255, 255, 255);
@@ -122,6 +124,7 @@ section {
                     }
                 }
 
+               
                 .scroll-up {
                     display: flex;
                     justify-content: end;
@@ -133,7 +136,6 @@ section {
                         height: 38px;
                         border: none;
                         background: none;
-                        padding: 0;
                         cursor: pointer;
 
                         .default-img,

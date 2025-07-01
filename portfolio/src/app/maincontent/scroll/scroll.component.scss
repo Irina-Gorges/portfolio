@@ -4,6 +4,7 @@
 section {
     .content {
         @include flex($justify: space-between, $align: center);
+        padding-right: 6rem;
 
         .socialmedia {
             @include flex($justify: space-between, $align: center);

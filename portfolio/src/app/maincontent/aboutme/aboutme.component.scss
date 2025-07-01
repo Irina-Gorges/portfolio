@@ -4,10 +4,10 @@
 section {
     margin-bottom: 8rem;
     .content {
-        // @include flex($align: center);
         display: flex;
         justify-content: center;
         align-items: center;
+        padding-left: 6rem;
         .left-sec {
             width: 35rem;
             margin-right: 10rem;

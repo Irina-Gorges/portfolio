@@ -31,54 +31,125 @@
                         #contactForm="ngForm"
                     >
                         <!-- Name -->
-                        <label for="yname"></label>
-                        <input
-                            #nameModel="ngModel"
-                            [(ngModel)]="contactData.name"
-                            type="text"
-                            id="yname"
-                            name="yourname"
-                            placeholder="Your name"
-                            required
-                            minlength="4"
-                        />
-                        <span *ngIf="!nameModel.valid && nameModel.touched"
-                            >Please enter a name</span
-                        >
+                        <div class="required">
+                            <div class="input-icon-wrapper">
+                                <label for="yname"></label>
+                                <input
+                                    #nameModel="ngModel"
+                                    [(ngModel)]="contactData.name"
+                                    type="text"
+                                    id="yname"
+                                    name="yourname"
+                                    placeholder="Your name"
+                                    required
+                                    minlength="4"
+                                    [class.error]="
+                                        !nameModel.valid && nameModel.touched
+                                    "
+                                    [class.success]="
+                                        nameModel.valid && nameModel.touched
+                                    "
+                                />
+                                <!-- Fehler-Icon -->
+                                <img
+                                    *ngIf="
+                                        !nameModel.valid && nameModel.touched
+                                    "
+                                    src="./assets/images/icons/error.png"
+                                    alt="Error"
+                                    class="icon-indicator"
+                                />
+
+                                <!-- Erfolgs-Icon -->
+                                <img
+                                    *ngIf="nameModel.valid && nameModel.touched"
+                                    src="./assets/images/icons/done.png"
+                                    alt="Success"
+                                    class="icon-indicator"
+                                />
+                            </div>
+                            <span *ngIf="!nameModel.valid && nameModel.touched"
+                                >Please enter a name</span
+                            >
+                        </div>
 
                         <!-- Email -->
-                        <label for="email"></label>
-                        <input
-                            #emailModel="ngModel"
-                            [(ngModel)]="contactData.email"
-                            type="email"
-                            id="email"
-                            name="email"
-                            placeholder="Your email"
-                            required
-                            minlength="4"
-                            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-                        />
-                        <span *ngIf="!emailModel.valid && emailModel.touched"
-                            >Please enter a valid email</span
-                        >
+                        <div class="required">
+                            <div class="input-icon-wrapper">
+                                <label for="email"></label>
+                                <input
+                                    #emailModel="ngModel"
+                                    [(ngModel)]="contactData.email"
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="Your email"
+                                    required
+                                    minlength="4"
+                                    pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                                    [class.error]="
+                                        !emailModel.valid && emailModel.touched
+                                    "
+                                    [class.success]="
+                                        emailModel.valid && emailModel.touched
+                                    "
+                                />
+                                <!-- Fehler-Icon -->
+                                <img
+                                    *ngIf="
+                                        !emailModel.valid && emailModel.touched
+                                    "
+                                    src="./assets/images/icons/error.png"
+                                    alt="Error"
+                                    class="icon-indicator"
+                                />
+
+                                <!-- Erfolgs-Icon -->
+                                <img
+                                    *ngIf="
+                                        emailModel.valid && emailModel.touched
+                                    "
+                                    src="./assets/images/icons/done.png"
+                                    alt="Success"
+                                    class="icon-indicator"
+                                />
+                            </div>
+                            <span
+                                *ngIf="!emailModel.valid && emailModel.touched"
+                                >Please enter a valid email</span
+                            >
+                        </div>
 
                         <!-- Message -->
-                        <label for="message"></label>
-                        <textarea
-                            #messageModel="ngModel"
-                            [(ngModel)]="contactData.message"
-                            id="message"
-                            name="message"
-                            placeholder="Your message"
-                            style="height: 200px"
-                            required
-                            minlength="4"
-                        ></textarea>
-                        <span
-                            *ngIf="!messageModel.valid && messageModel.touched"
-                            >Please enter a message</span
-                        >
+                        <div class="required">
+                            <div class="input-icon-wrapper">
+                                <label for="message"></label>
+                                <textarea
+                                    #messageModel="ngModel"
+                                    [(ngModel)]="contactData.message"
+                                    id="message"
+                                    name="message"
+                                    placeholder="Your message"
+                                    style="height: 200px"
+                                    required
+                                    minlength="4"
+                                    [class.error]="
+                                        !messageModel.valid &&
+                                        messageModel.touched
+                                    "
+                                    [class.success]="
+                                        messageModel.valid &&
+                                        messageModel.touched
+                                    "
+                                ></textarea>
+                            </div>
+                            <span
+                                *ngIf="
+                                    !messageModel.valid && messageModel.touched
+                                "
+                                >Please enter a message</span
+                            >
+                        </div>
 
                         <input type="submit" value="Send Message :)" />
                     </form>

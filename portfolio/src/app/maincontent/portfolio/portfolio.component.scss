@@ -3,6 +3,8 @@
 
 section {
     .content {
+        margin-top: 8rem;
+        padding-left: 6rem;
         .headline-portfolio {
             .left {
                 display: flex;
@@ -25,12 +27,17 @@ section {
                 }
 
                 .long-line {
-                    max-width: 26rem;
+                    max-width: 32rem;
                     width: 28rem;
                     height: 4px;
                     flex: 1;
                     background-color: #9747ff;
                 }
+            }
+
+            .subtitles {
+                display: flex;
+                justify-content: center;
             }
 
             .right {

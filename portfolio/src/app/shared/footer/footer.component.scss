@@ -3,10 +3,13 @@
 
 footer {
     height: 10rem;
-    .content {
-        width: 90%;
+    border-top: 4px solid #70e61c;
 
+    .content {
+        width: 100%;
         @include flex($justify: space-between, $align: center);
+        padding: 0 6rem;
+
         .logo-impress {
             width: 10rem;
             height: 4rem;
@@ -26,6 +29,14 @@ footer {
             width: 15rem;
             img {
                 margin-right: 2rem;
+            }
+
+            .btn-social {
+                width: 30px;
+                transition: transform 0.2s ease;
+                &:hover {
+                    transform: translateX(6px) scale(1.3);
+                }
             }
         }
     }
