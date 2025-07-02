@@ -2,14 +2,14 @@
 @import "../../shared/mixins.scss";
 
 section {
-    margin-bottom: 8rem;
     .content {
         display: flex;
         justify-content: center;
         align-items: center;
         padding-left: 6rem;
+        padding-bottom: 8rem;
         .left-sec {
-            width: 35rem;
+            width: 35%;
             margin-right: 10rem;
             padding-left: 3rem;
 
@@ -26,7 +26,6 @@ section {
         .personal-container {
             display: flex;
             flex-direction: column;
-            width: 32rem;
 
             .personal-sec {
                 display: flex;

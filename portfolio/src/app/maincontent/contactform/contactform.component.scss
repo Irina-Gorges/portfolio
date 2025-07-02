@@ -3,9 +3,7 @@
 
 section {
     .content {
-        border: 3px solid grey;
-        display: flex;
-        margin-top: 8rem;
+        padding-bottom: 3rem;
         .left {
             .headline {
                 display: flex;
@@ -17,7 +15,7 @@ section {
                     height: 4px;
                     flex: 1;
                     background-color: #9747ff;
-                    margin-right: 2rem;
+                    margin-right: 1rem;
                 }
                 h2 {
                     font-size: 90px;
@@ -26,17 +24,15 @@ section {
 
             .over-sec {
                 width: 100%;
-                border: 3px solid skyblue;
+
                 display: flex;
                 padding: 0 6rem;
-                margin-top: 4rem;
                 .container-left {
-                    padding-left: 4rem;
+                    width: 100%;
+                    padding-left: 3rem;
                     .text_container {
+                        width: 70%;
                         .contact-text {
-                            width: 35rem;
-                            margin-right: 6rem;
-
                             h3 {
                                 font-size: 32px;
                             }
@@ -49,9 +45,8 @@ section {
                 }
                 .container-right {
                     width: 100%;
-                    border: 3px solid orange;
+
                     form {
-                        border: 4px solid yellow;
                         border-radius: 5px;
                         padding-right: 4rem;
 
@@ -113,26 +108,28 @@ section {
                             @extend input; // Reuse the general input styles
                         }
 
-                        input[type="submit"] {
-                            _width: 45%;
-                            text-align: center;
+                        .btn-formular {
+                            display: flex;
                             justify-content: center;
-                            top: 2rem;
-                            font-size: 23px;
-                            background-color: #b6b6b6;
-                            color: rgb(255, 255, 255);
-                            padding: 10px 20px;
-                            border: none;
-                            border-radius: 10px;
-                            cursor: pointer;
-                            margin-bottom: 6rem;
+                            button[type="submit"] {
+                                text-align: center;
+                                justify-content: center;
+                                top: 2rem;
+                                font-size: 23px;
+                                background-color: #b6b6b6;
+                                color: rgb(255, 255, 255);
+                                padding: 10px 20px;
+                                border: none;
+                                border-radius: 10px;
+                                cursor: pointer;
+                            }
                         }
                     }
 
                     .scroll-up {
                         display: flex;
                         justify-content: end;
-                        padding: 0 4rem 4rem 0;
+                        padding: 3rem 2rem 3rem 0;
 
                         #scrollUpBtn {
                             position: relative;

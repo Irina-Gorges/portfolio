@@ -9,7 +9,7 @@ section {
         .socialmedia {
             @include flex($justify: space-between, $align: center);
             width: 100%;
-            padding: 4rem 4rem 4rem 0;
+            padding-top: 4rem;
         }
         .linkBox {
             @include flex($align: center);

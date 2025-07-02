@@ -10,7 +10,7 @@ header {
     background-color: #141d2f;
     top: 0;
     z-index: 4;
-    filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.308));
+    filter: drop-shadow(3px 3px 5px rgba(43, 43, 43, 0.11));
 
     .content {
         @include flex($justify: space-between, $align: center);
@@ -18,15 +18,16 @@ header {
         padding: 3rem 6rem;
 
         .logo {
-            width: 8.5rem;
-            height: 2.7rem;
+            width: 155px;
+            height: 50px;
         }
 
         nav {
-            width: 35rem;
+            width: 26%;
 
             ul {
-                @include flex($justify: space-evenly);
+                @include flex($justify: space-evenly, $align: end);
+                gap: 2rem;
                 a {
                     font-size: 24px;
                     font-weight: 300;
