@@ -4,7 +4,6 @@
 section {
     height: 100vh;
     .content {
-        @include flex();
         .left {
             .headline {
                 @include flex($justify: start);
@@ -24,7 +23,7 @@ section {
 
             .over-sec {
                 width: 100%;
-
+                margin-top: 4rem;
                 display: flex;
                 padding: 0 6rem;
                 .container-left {

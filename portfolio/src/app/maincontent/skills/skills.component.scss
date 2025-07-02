@@ -4,16 +4,17 @@
 section {
     height: 100vh;
     .content {
-        @include flex();
+        @include flex($justify: space-between);
         padding-left: 6rem;
 
         .skill-icons {
-            @include flex();
+            @include flex($justify: start, $align: start);
             flex-wrap: wrap;
             gap: 5rem;
+            row-gap: 80px;
             font-size: 16px;
             font-weight: 500;
-            width: 60%;
+            width: 50%;
             height: 12rem;
 
             div {
