@@ -106,20 +106,95 @@ section {
                             @extend input; // Reuse the general input styles
                         }
 
+                        /* Container der Checkbox */
+                        .custom-checkbox {
+                            cursor: pointer;
+                            position: relative;
+                            padding-left: 32px;
+                            font-size: 16px;
+                            font-weight: 300;
+                            user-select: none;
+                        }
+
+                        /* Verstecke das native Checkbox-Eingabefeld */
+                        .custom-checkbox input[type="checkbox"] {
+                            position: absolute;
+                            opacity: 0;
+                            cursor: pointer;
+                            height: 0;
+                            width: 0;
+                        }
+
+                        /* Gestalte die sichtbare Box */
+                        .custom-checkbox .checkmark {
+                            position: absolute;
+                            left: 0;
+                            height: 20px;
+                            width: 20px;
+                            border: 2px solid $green; /* Grüner Rand */
+                            background-color: transparent;
+                            transition: all 0.2s ease-in-out;
+                            box-sizing: border-box;
+                        }
+
+                        /* Haken anzeigen, wenn gecheckt */
+                        .custom-checkbox input:checked ~ .checkmark {
+                            _background-color: $green; /* Grüner Hintergrund */
+                            border-color: $green;
+                        }
+
+                        /* Haken-Stil */
+                        .custom-checkbox .checkmark::after {
+                            content: "";
+                            position: absolute;
+                            display: none;
+                            left: 50%;
+                            top: 50%;
+                            width: 6px;
+                            height: 12px;
+                            border: solid $green;
+                            border-width: 0 2px 2px 0;
+                            transform: translate(-50%, -50%) rotate(45deg);
+                        }
+
+                        /* Wenn gecheckt, zeige den Haken */
+                        .custom-checkbox input:checked ~ .checkmark::after {
+                            display: block;
+                            color: $green;
+                        }
+
+                        /* Optional: Link-Stil anpassen */
+                        .custom-checkbox a {
+                            color: $violett;
+                            text-decoration: underline;
+                            margin-left: 4px;
+                        }
+
                         .btn-formular {
-                            display: flex;
-                            justify-content: center;
-                            button[type="submit"] {
-                                text-align: center;
-                                justify-content: center;
-                                top: 2rem;
-                                font-size: 23px;
-                                background-color: #b6b6b6;
-                                color: rgb(255, 255, 255);
-                                padding: 10px 20px;
-                                border: none;
+                            @include flex();
+
+                            .enabled-button {
+                                margin-top: 25px;
+                                font-size: 28px;
                                 border-radius: 10px;
+                                border: none;
+                                padding: 15px 30px;
+                                background-color: $green;
+                                box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
+                                color: white;
                                 cursor: pointer;
+                            }
+
+                            .disabled-button {
+                                margin-top: 25px;
+                                font-size: 28px;
+                                border-radius: 10px;
+                                border: none;
+                                padding: 15px 30px;
+                                background-color: #b6b6b6;
+                                color: white;
+                                box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
+                                cursor: not-allowed;
                             }
                         }
                     }
