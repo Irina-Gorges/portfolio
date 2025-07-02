@@ -14,18 +14,40 @@
                 </p>
             </div>
         </div>
-        <div class="right">
-            <img
-                src="./assets/images/mockup_screens/Join.png"
-                alt="Project Join"
-            />
-            <h3>Join</h3>
-            <h4>Angular | Typescript | HTML | CSS | Firebase</h4>
-            <p>
-                Task manager inspired by the Kanban System. Create and organize
-                tasks using drag and drop functions, assign users and
-                categories.
-            </p>
+        <div class="proContainer">
+            <div
+                *ngFor="let project of projects; let i = index"
+                [ngClass]="{
+                    'layout-left': i % 2 === 0,
+                    'layout-right': i % 2 !== 0
+                }"
+                class="project-container"
+            >
+                <img [src]="project.imageSrc" [alt]="project.altText" />
+                <div class="text-content">
+                    <h3>{{ project.title }}</h3>
+                    <h4>{{ project.technologies }}</h4>
+                    <p>{{ project.description }}</p>
+                    <div class="buttons">
+                        <a
+                            *ngIf="project.liveUrl"
+                            [href]="project.liveUrl"
+                            target="_blank"
+                            rel="noopener"
+                            class="btn btn-live"
+                            >Live Test</a
+                        >
+                        <a
+                            *ngIf="project.repoUrl"
+                            [href]="project.repoUrl"
+                            target="_blank"
+                            rel="noopener"
+                            class="btn btn-repo"
+                            >GitHub</a
+                        >
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

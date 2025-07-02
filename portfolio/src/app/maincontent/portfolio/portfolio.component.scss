@@ -2,11 +2,7 @@
 @import "../../shared/mixins.scss";
 
 section {
-    height: 100vh;
     .content {
-        @include flex($direction: column);
-        padding-left: 6rem;
-
         .headline-portfolio {
             .title {
                 @include flex($justify: flex-end);
@@ -40,22 +36,83 @@ section {
             }
         }
 
-        .right {
-            @include flex($direction: column);
+        .project-container {
+            padding: 0 6rem 0 12rem;
+            display: flex;
+            align-items: center;
+        }
+        .layout-left {
+            flex-direction: row; /* Bild links, Text rechts */
+        }
 
-            img {
-                width: 20rem;
-            }
+        .layout-right {
+            flex-direction: row-reverse; /* Bild rechts, Text links */
+        }
 
-            h3 {
-                font-size: 32px;
-                color: #9747ff;
-            }
+        .project-container img {
+            width: 500px;
+            margin: 0 1rem;
+            border-radius: 8px;
+        }
 
-            h4 {
+        .text-content {
+            padding: 0 1rem;
+        }
+
+        h3 {
+            margin: 0 0 0.3rem;
+            font-size: 32px;
+            color: $violett;
+        }
+
+        h4 {
+            margin: 0 0 0.8rem;
+            color: $green;
+            font-size: 23px;
+            font-weight: normal;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+            margin: 0;
+            line-height: 1.4;
+        }
+        .buttons {
+            margin-top: 3rem;
+
+            .btn {
+                display: inline-block;
+                outline: none;
+                text-align: center;
+                padding: 15px 30px;
+                margin-right: 5rem;
+                border-radius: 15px;
+                text-decoration: none;
+                transition: background-color 0.3s ease;
+                color: white;
+                width: 165px;
+                height: 58px;
                 font-size: 23px;
-                font-weight: 400;
-                color: #70e61c;
+                font-weight: 300;
+                line-height: 1.4;
+
+                &.btn-live {
+                    background-color: $violett;
+
+                    &:hover {
+                        background-color: $green;
+                    }
+                }
+
+                &.btn-repo {
+                    background-color: #141d2f;
+                    border: 1px solid $green;
+
+                    &:hover {
+                        background-color: $green;
+                    }
+                }
             }
         }
     }
