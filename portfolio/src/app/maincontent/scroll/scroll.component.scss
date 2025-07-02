@@ -3,16 +3,16 @@
 
 section {
     .content {
-        @include flex($justify: space-between, $align: center);
+        @include flex($justify: space-between);
         padding-right: 6rem;
 
         .socialmedia {
-            @include flex($justify: space-between, $align: center);
+            @include flex($justify: space-between);
             width: 100%;
             padding-top: 4rem;
         }
         .linkBox {
-            @include flex($align: center);
+            @include flex();
             gap: 2rem;
 
             .line {
@@ -40,6 +40,7 @@ section {
         .scrollInfo {
             @include flex($direction: column);
             gap: 1rem;
+            animation: jump 2s ease infinite;
 
             #scrollDownBtn {
                 background: none;
@@ -56,6 +57,24 @@ section {
 
                 &:hover {
                     opacity: 0.8;
+                }
+
+                @keyframes jump {
+                    0%,
+                    20%,
+                    50%,
+                    80%,
+                    100% {
+                        transform: translateY(0);
+                    }
+
+                    40% {
+                        transform: translateY(-30px);
+                    }
+
+                    60% {
+                        transform: translateY(-15px);
+                    }
                 }
             }
         }

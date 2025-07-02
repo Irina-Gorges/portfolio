@@ -7,7 +7,7 @@ footer {
 
     .content {
         width: 100%;
-        @include flex($justify: space-between, $align: center);
+        @include flex($justify: space-between);
         padding: 0 6rem;
 
         .logo-impress {

@@ -7,9 +7,20 @@ import { Component } from '@angular/core';
     styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-    activeLink: string = 'start'; // Standardwert
+    activeLink: string = 'aboutme'; // Standardwert
+    currentLanguage: 'de' | 'en' = 'en'; //Standartsprache Englisch
 
-    setActive(link: string) {
+    scrollTo(id: string) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+    setActive(link: string): void {
         this.activeLink = link;
+    }
+
+    setLanguage(lang: 'de' | 'en') {
+        this.currentLanguage = lang;
     }
 }

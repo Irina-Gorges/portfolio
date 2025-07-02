@@ -2,9 +2,9 @@
 @import "../../shared/mixins.scss";
 
 section {
+    height: 80vh;
     .content {
-        display: flex;
-        align-items: center;
+        @include flex();
         gap: 1rem;
         padding: 0 6rem;
 
@@ -64,7 +64,7 @@ section {
         }
     }
     .shape {
-        @include flex($justify: center);
+        @include flex();
         z-index: -1;
         height: 50rem;
         position: absolute;

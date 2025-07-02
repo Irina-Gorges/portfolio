@@ -2,12 +2,12 @@
 @import "../../shared/mixins.scss";
 
 section {
+    height: 100vh;
     .content {
-        padding-bottom: 3rem;
+        @include flex();
         .left {
             .headline {
-                display: flex;
-                align-items: center;
+                @include flex($justify: start);
 
                 .line {
                     max-width: 8rem;
@@ -48,7 +48,6 @@ section {
 
                     form {
                         border-radius: 5px;
-                        padding-right: 4rem;
 
                         span {
                             font-weight: 200;
@@ -129,7 +128,7 @@ section {
                     .scroll-up {
                         display: flex;
                         justify-content: end;
-                        padding: 3rem 2rem 3rem 0;
+                        padding: 3rem 1rem 3rem 0;
 
                         #scrollUpBtn {
                             position: relative;

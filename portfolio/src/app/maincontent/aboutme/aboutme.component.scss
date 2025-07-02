@@ -2,12 +2,11 @@
 @import "../../shared/mixins.scss";
 
 section {
+    height: 100vh;
     .content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex();
         padding-left: 6rem;
-        padding-bottom: 8rem;
+
         .left-sec {
             width: 35%;
             margin-right: 10rem;
@@ -24,12 +23,10 @@ section {
         }
 
         .personal-container {
-            display: flex;
-            flex-direction: column;
+            @include flex($direction: column);
 
             .personal-sec {
-                display: flex;
-                align-items: center;
+                @include flex();
                 .personal-img {
                     margin-right: 2rem;
                     width: 3rem;
@@ -44,8 +41,7 @@ section {
         }
 
         .me {
-            display: flex;
-            justify-content: flex-end;
+            @include flex();
             top: 1rem;
 
             img {

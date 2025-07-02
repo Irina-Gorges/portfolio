@@ -10,10 +10,10 @@ header {
     background-color: #141d2f;
     top: 0;
     z-index: 4;
-    filter: drop-shadow(3px 3px 5px rgba(43, 43, 43, 0.11));
+    filter: drop-shadow(3px 3px 5px rgba(22, 22, 22, 0.582));
 
     .content {
-        @include flex($justify: space-between, $align: center);
+        @include flex($justify: space-between);
         height: 5rem;
         padding: 3rem 6rem;
 
@@ -23,7 +23,7 @@ header {
         }
 
         nav {
-            width: 26%;
+            width: 34%;
 
             ul {
                 @include flex($justify: space-evenly, $align: end);
@@ -39,20 +39,39 @@ header {
                 }
             }
 
-            .nav-link::after {
-                content: "";
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                height: 4px;
-                width: 0;
-                text-underline-offset: 8px;
-                background-color: $violett;
-                transition: width 0.3s ease;
+            a.nav-link {
+                text-decoration: none;
             }
 
-            .nav-link:hover::after {
-                width: 50%; /* beim Hover, optional */
+            a.nav-link.active {
+                position: relative;
+                color: inherit;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 4px;
+                    width: 50%; // → nur halber Text
+                    background-color: $violett;
+                }
+            }
+
+            .lang-switch {
+                @include flex();
+                gap: 0.5rem;
+                cursor: pointer;
+                font-size: 24px;
+            }
+
+            .lang-switch span {
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .lang-switch span.active {
+                text-decoration: underline $violett 4px solid;
             }
         }
     }

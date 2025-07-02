@@ -2,14 +2,14 @@
 @import "../../shared/mixins.scss";
 
 section {
+    height: 100vh;
     .content {
+        @include flex($direction: column);
         padding-left: 6rem;
-        padding-bottom: 8rem;
+
         .headline-portfolio {
-            .left {
-                display: flex;
-                align-items: center;
-                justify-content: flex-end;
+            .title {
+                @include flex($justify: flex-end);
                 gap: 2rem;
 
                 .short-line {
@@ -36,27 +36,26 @@ section {
             }
 
             .subtitles {
-                display: flex;
-                justify-content: center;
+                @include flex();
+            }
+        }
+
+        .right {
+            @include flex($direction: column);
+
+            img {
+                width: 20rem;
             }
 
-            .right {
-                @include flex($direction: column);
+            h3 {
+                font-size: 32px;
+                color: #9747ff;
+            }
 
-                img {
-                    width: 20rem;
-                }
-
-                h3 {
-                    font-size: 32px;
-                    color: #9747ff;
-                }
-
-                h4 {
-                    font-size: 23px;
-                    font-weight: 400;
-                    color: #70e61c;
-                }
+            h4 {
+                font-size: 23px;
+                font-weight: 400;
+                color: #70e61c;
             }
         }
     }
