@@ -43,18 +43,12 @@
                                     placeholder="Your name"
                                     required
                                     minlength="4"
-                                    [class.error]="
-                                        !nameModel.valid && nameModel.touched
-                                    "
-                                    [class.success]="
-                                        nameModel.valid && nameModel.touched
-                                    "
+                                    [class.error]="isInvalid(nameModel)"
+                                    [class.success]="isValid(nameModel)"
                                 />
                                 <!-- Fehler-Icon -->
                                 <img
-                                    *ngIf="
-                                        !nameModel.valid && nameModel.touched
-                                    "
+                                    *ngIf="getIconType(nameModel) === 'error'"
                                     src="./assets/images/icons/error.png"
                                     alt="Error"
                                     class="icon-indicator"
@@ -62,15 +56,15 @@
 
                                 <!-- Erfolgs-Icon -->
                                 <img
-                                    *ngIf="nameModel.valid && nameModel.touched"
+                                    *ngIf="getIconType(nameModel) === 'success'"
                                     src="./assets/images/icons/done.png"
                                     alt="Success"
                                     class="icon-indicator"
                                 />
                             </div>
-                            <span *ngIf="!nameModel.valid && nameModel.touched"
-                                >Please enter a name</span
-                            >
+                            <span *ngIf="getErrorMessage(nameModel, 'name')">
+                                {{ getErrorMessage(nameModel, "name") }}
+                            </span>
                         </div>
 
                         <!-- Email -->
@@ -87,18 +81,12 @@
                                     required
                                     minlength="4"
                                     pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-                                    [class.error]="
-                                        !emailModel.valid && emailModel.touched
-                                    "
-                                    [class.success]="
-                                        emailModel.valid && emailModel.touched
-                                    "
+                                    [class.error]="isInvalid(emailModel)"
+                                    [class.success]="isValid(emailModel)"
                                 />
                                 <!-- Fehler-Icon -->
                                 <img
-                                    *ngIf="
-                                        !emailModel.valid && emailModel.touched
-                                    "
+                                    *ngIf="getIconType(emailModel) === 'error'"
                                     src="./assets/images/icons/error.png"
                                     alt="Error"
                                     class="icon-indicator"
@@ -107,17 +95,16 @@
                                 <!-- Erfolgs-Icon -->
                                 <img
                                     *ngIf="
-                                        emailModel.valid && emailModel.touched
+                                        getIconType(emailModel) === 'success'
                                     "
                                     src="./assets/images/icons/done.png"
                                     alt="Success"
                                     class="icon-indicator"
                                 />
                             </div>
-                            <span
-                                *ngIf="!emailModel.valid && emailModel.touched"
-                                >Please enter a valid email</span
-                            >
+                            <span *ngIf="getErrorMessage(emailModel, 'name')">
+                                {{ getErrorMessage(emailModel, "name") }}
+                            </span>
                         </div>
 
                         <!-- Message -->
@@ -133,22 +120,14 @@
                                     style="height: 200px"
                                     required
                                     minlength="4"
-                                    [class.error]="
-                                        !messageModel.valid &&
-                                        messageModel.touched
-                                    "
-                                    [class.success]="
-                                        messageModel.valid &&
-                                        messageModel.touched
-                                    "
+                                    [class.error]="isInvalid(messageModel)"
+                                    [class.success]="isValid(messageModel)"
                                 ></textarea>
                             </div>
-                            <span
-                                *ngIf="
-                                    !messageModel.valid && messageModel.touched
-                                "
-                                >Please enter a message</span
-                            >
+                            <span *ngIf="getErrorMessage(messageModel, 'name')">
+                                {{ getErrorMessage(messageModel, "name") }}
+                            </span>
+
                             <div class="required checkbox-privacy">
                                 <label class="custom-checkbox">
                                     <input

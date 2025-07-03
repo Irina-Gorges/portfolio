@@ -32,6 +32,36 @@ export class ContactFormComponent {
         },
     };
 
+    getIconType(model: any): 'error' | 'success' | boolean {
+        if (model.touched) {
+            if (model.valid) return 'success';
+            if (model.invalid) return 'error';
+        }
+        return false;
+    }
+
+    isInvalid(model: any): boolean {
+        return model.invalid && model.touched;
+    }
+
+    isValid(model: any): boolean {
+        return model.valid && model.touched;
+    }
+
+    getErrorMessage(model: any, field: string): string | boolean {
+        if (!model.touched || model.valid) return false;
+        switch (field) {
+            case 'name':
+                return 'Please enter a name';
+            case 'email':
+                return 'Please enter a valid email';
+            case 'message':
+                return 'Please enter a message';
+            default:
+                return false;
+        }
+    }
+
     onSubmit(ngForm: NgForm) {
         if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
             this.http

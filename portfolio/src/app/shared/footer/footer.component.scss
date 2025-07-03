@@ -31,6 +31,12 @@ footer {
                 margin-right: 2rem;
             }
 
+            .footer-nav {
+                a {
+                    cursor: pointer;
+                }
+            }
+
             .btn-social {
                 width: 30px;
                 transition: transform 0.2s ease;
