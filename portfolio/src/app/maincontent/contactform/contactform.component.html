@@ -26,41 +26,21 @@
                 </div>
 
                 <div class="container-right">
-                    <form
-                        (ngSubmit)="onSubmit(contactForm)"
-                        #contactForm="ngForm"
-                    >
+                    <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
                         <!-- Name -->
                         <div class="required">
                             <div class="input-icon-wrapper">
                                 <label for="yname"></label>
-                                <input
-                                    #nameModel="ngModel"
-                                    [(ngModel)]="contactData.name"
-                                    type="text"
-                                    id="yname"
-                                    name="yourname"
-                                    placeholder="Your name"
-                                    required
-                                    minlength="4"
-                                    [class.error]="isInvalid(nameModel)"
-                                    [class.success]="isValid(nameModel)"
-                                />
+                                <input #nameModel="ngModel" [(ngModel)]="contactData.name" type="text" id="yname"
+                                    name="yourname" placeholder="Your name" required minlength="4"
+                                    [class.error]="isInvalid(nameModel)" [class.success]="isValid(nameModel)" />
                                 <!-- Fehler-Icon -->
-                                <img
-                                    *ngIf="getIconType(nameModel) === 'error'"
-                                    src="./assets/images/icons/error.png"
-                                    alt="Error"
-                                    class="icon-indicator"
-                                />
+                                <img *ngIf="getIconType(nameModel) === 'error'" src="./assets/images/icons/error.png"
+                                    alt="Error" class="icon-indicator" />
 
                                 <!-- Erfolgs-Icon -->
-                                <img
-                                    *ngIf="getIconType(nameModel) === 'success'"
-                                    src="./assets/images/icons/done.png"
-                                    alt="Success"
-                                    class="icon-indicator"
-                                />
+                                <img *ngIf="getIconType(nameModel) === 'success'" src="./assets/images/icons/done.png"
+                                    alt="Success" class="icon-indicator" />
                             </div>
                             <span *ngIf="getErrorMessage(nameModel, 'name')">
                                 {{ getErrorMessage(nameModel, "name") }}
@@ -71,36 +51,18 @@
                         <div class="required">
                             <div class="input-icon-wrapper">
                                 <label for="email"></label>
-                                <input
-                                    #emailModel="ngModel"
-                                    [(ngModel)]="contactData.email"
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="Your email"
-                                    required
-                                    minlength="4"
+                                <input #emailModel="ngModel" [(ngModel)]="contactData.email" type="email" id="email"
+                                    name="email" placeholder="Your email" required minlength="4"
                                     pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
-                                    [class.error]="isInvalid(emailModel)"
-                                    [class.success]="isValid(emailModel)"
-                                />
+                                    [class.error]="isInvalid(emailModel)" [class.success]="isValid(emailModel)" />
                                 <!-- Fehler-Icon -->
-                                <img
-                                    *ngIf="getIconType(emailModel) === 'error'"
-                                    src="./assets/images/icons/error.png"
-                                    alt="Error"
-                                    class="icon-indicator"
-                                />
+                                <img *ngIf="getIconType(emailModel) === 'error'" src="./assets/images/icons/error.png"
+                                    alt="Error" class="icon-indicator" />
 
                                 <!-- Erfolgs-Icon -->
-                                <img
-                                    *ngIf="
+                                <img *ngIf="
                                         getIconType(emailModel) === 'success'
-                                    "
-                                    src="./assets/images/icons/done.png"
-                                    alt="Success"
-                                    class="icon-indicator"
-                                />
+                                    " src="./assets/images/icons/done.png" alt="Success" class="icon-indicator" />
                             </div>
                             <span *ngIf="getErrorMessage(emailModel, 'name')">
                                 {{ getErrorMessage(emailModel, "name") }}
@@ -111,18 +73,10 @@
                         <div class="required">
                             <div class="input-icon-wrapper">
                                 <label for="message"></label>
-                                <textarea
-                                    #messageModel="ngModel"
-                                    [(ngModel)]="contactData.message"
-                                    id="message"
-                                    name="message"
-                                    placeholder="Your message"
-                                    style="height: 200px"
-                                    required
-                                    minlength="4"
-                                    [class.error]="isInvalid(messageModel)"
-                                    [class.success]="isValid(messageModel)"
-                                ></textarea>
+                                <textarea #messageModel="ngModel" [(ngModel)]="contactData.message" id="message"
+                                    name="message" placeholder="Your message" style="height: 200px" required
+                                    minlength="4" [class.error]="isInvalid(messageModel)"
+                                    [class.success]="isValid(messageModel)"></textarea>
                             </div>
                             <span *ngIf="getErrorMessage(messageModel, 'name')">
                                 {{ getErrorMessage(messageModel, "name") }}
@@ -130,67 +84,45 @@
 
                             <div class="required checkbox-privacy">
                                 <label class="custom-checkbox">
-                                    <input
-                                        type="checkbox"
-                                        id="privacy"
-                                        name="privacy"
-                                        [(ngModel)]="
+                                    <input type="checkbox" id="privacy" name="privacy" [(ngModel)]="
                                             contactData.acceptedPrivacy
-                                        "
-                                        required
-                                    />
+                                        " required />
                                     <span class="checkmark"></span>
                                     I've read the
                                     <a href="/privacy" target="_blank">
-                                        privacy policy</a
-                                    >
+                                        privacy policy</a>
                                     &nbsp; and agree to the processing of my
                                     data as outlined.
                                 </label>
-                                <span
-                                    *ngIf="
+                                <span *ngIf="
                                         contactForm.submitted &&
                                         !contactData.acceptedPrivacy
-                                    "
-                                    class="error-text"
-                                    >You must accept the privacy policy</span
-                                >
+                                    " class="error-text">You must accept the privacy policy</span>
                             </div>
                         </div>
 
                         <!-- Submit Button -->
                         <div class="btn-formular">
-                            <button
-                                type="submit"
-                                [disabled]="
+                            <button type="submit" [disabled]="
                                     !contactForm.valid ||
                                     !contactData.acceptedPrivacy
-                                "
-                                [class.enabled-button]="
+                                " [class.enabled-button]="
                                     contactForm.valid &&
                                     contactData.acceptedPrivacy
-                                "
-                                [class.disabled-button]="
+                                " [class.disabled-button]="
                                     !contactForm.valid ||
                                     !contactData.acceptedPrivacy
-                                "
-                            >
+                                ">
                                 Send Message :)
                             </button>
                         </div>
                     </form>
                     <div class="scroll-up">
                         <button (click)="scrollToTop()" id="scrollUpBtn">
-                            <img
-                                src="./assets/images/goupbutton/arrow-down-line.png"
-                                alt="default-image"
-                                class="default-img"
-                            />
-                            <img
-                                src="./assets/images/goupbutton/arrow-down-line_hover.png"
-                                alt="hover image"
-                                class="hover-img"
-                            />
+                            <img src="./assets/images/goupbutton/arrow-down-line.png" alt="default-image"
+                                class="default-img" />
+                            <img src="./assets/images/goupbutton/arrow-down-line_hover.png" alt="hover image"
+                                class="hover-img" />
                         </button>
                     </div>
                 </div>

@@ -2,20 +2,22 @@
 @import "../../shared/mixins.scss";
 
 section {
-    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    
     .content {
         @include flex($justify: space-between);
-        padding-left: 6rem;
+        padding-left: 6em;
 
         .skill-icons {
             @include flex($justify: start, $align: start);
             flex-wrap: wrap;
-            gap: 5rem;
+            gap: 5em;
             row-gap: 80px;
             font-size: 16px;
             font-weight: 500;
             width: 50%;
-            height: 12rem;
+            height: 12em;
 
             div {
                 @include flex($direction: column);
@@ -48,7 +50,7 @@ section {
             text-align: end;
 
             p {
-                padding-right: 6rem;
+                padding-right: 6em;
             }
 
             .h2-line {
@@ -57,12 +59,12 @@ section {
 
                 h2 {
                     font-size: 90px;
-                    margin-right: 2rem;
+                    margin-right: 2em;
                 }
 
                 .line {
-                    max-width: 15rem;
-                    width: 4rem;
+                    max-width: 15em;
+                    width: 4em;
                     height: 4px;
                     flex: 1;
                     background-color: #9747ff;
@@ -70,8 +72,8 @@ section {
             }
 
             .btn-Skills {
-                right: 13rem;
-                margin-top: 2rem;
+                right: 13em;
+                margin-top: 2em;
                 font-size: 23px;
                 font-weight: 300;
                 outline: none;

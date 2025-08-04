@@ -6,25 +6,25 @@ section {
         .headline-portfolio {
             .title {
                 @include flex($justify: flex-end);
-                gap: 2rem;
+                gap: 2em;
 
                 .short-line {
-                    max-width: 8rem;
-                    width: 4rem;
+                    max-width: 8em;
+                    width: 4em;
                     height: 4px;
                     flex: 1;
                     background-color: #9747ff;
-                    margin-right: 1rem;
+                    margin-right: 1em;
                 }
 
                 h2 {
                     font-size: 90px;
-                    margin-right: 1rem;
+                    margin-right: 1em;
                 }
 
                 .long-line {
-                    max-width: 32rem;
-                    width: 28rem;
+                    max-width: 32em;
+                    width: 28em;
                     height: 4px;
                     flex: 1;
                     background-color: #9747ff;
@@ -37,7 +37,7 @@ section {
         }
 
         .project-container {
-            padding: 0 6rem 0 12rem;
+            padding: 0 6em 0 12em;
             display: flex;
             align-items: center;
         }
@@ -51,22 +51,22 @@ section {
 
         .project-container img {
             width: 500px;
-            margin: 0 1rem;
+            margin: 0 1em;
             border-radius: 8px;
         }
 
         .text-content {
-            padding: 0 1rem;
+            padding: 0 1em;
         }
 
         h3 {
-            margin: 0 0 0.3rem;
+            margin: 0 0 0.3em;
             font-size: 32px;
             color: $violett;
         }
 
         h4 {
-            margin: 0 0 0.8rem;
+            margin: 0 0 0.8em;
             color: $green;
             font-size: 23px;
             font-weight: normal;
@@ -79,14 +79,14 @@ section {
             line-height: 1.4;
         }
         .buttons {
-            margin-top: 3rem;
+            margin-top: 3em;
 
             .btn {
                 display: inline-block;
                 outline: none;
                 text-align: center;
                 padding: 15px 30px;
-                margin-right: 5rem;
+                margin-right: 5em;
                 border-radius: 15px;
                 text-decoration: none;
                 transition: background-color 0.3s ease;

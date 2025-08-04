@@ -9,12 +9,12 @@ section {
                 @include flex($justify: start);
 
                 .line {
-                    max-width: 8rem;
-                    width: 4rem;
+                    max-width: 8em;
+                    width: 4em;
                     height: 4px;
                     flex: 1;
                     background-color: #9747ff;
-                    margin-right: 1rem;
+                    margin-right: 1em;
                 }
                 h2 {
                     font-size: 90px;
@@ -23,12 +23,12 @@ section {
 
             .over-sec {
                 width: 100%;
-                margin-top: 4rem;
+                margin-top: 4em;
                 display: flex;
-                padding: 0 6rem;
+                padding: 0 6em;
                 .container-left {
                     width: 100%;
-                    padding-left: 3rem;
+                    padding-left: 3em;
                     .text_container {
                         width: 70%;
                         .contact-text {
@@ -62,7 +62,7 @@ section {
                             textarea {
                                 width: 100%;
                                 padding: 12px;
-                                padding-right: 2.5rem; // Platz für Icon
+                                padding-right: 2.5em; // Platz für Icon
                                 border: 1px solid #9747ff;
                                 border-radius: 10px;
                                 box-sizing: border-box;
@@ -202,7 +202,7 @@ section {
                     .scroll-up {
                         display: flex;
                         justify-content: end;
-                        padding: 3rem 1rem 3rem 0;
+                        padding: 3em 1em 3em 0;
 
                         #scrollUpBtn {
                             position: relative;

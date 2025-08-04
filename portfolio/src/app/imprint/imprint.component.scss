@@ -1,0 +1,12 @@
+@import "../../styles.scss";
+@import "../shared/mixins.scss";
+
+section {
+    height: 100dvh;
+    width: 100%;
+    
+    .content {
+        padding-left: 6em;
+
+    }
+}

@@ -2,21 +2,21 @@
 @import "../mixins.scss";
 
 footer {
-    height: 14rem;
+    height: 11em;
     border-top: 4px solid #70e61c;
 
     .content {
         width: 100%;
         @include flex($justify: space-between);
-        padding: 0 6rem;
+        padding: 0 6em;
 
         .logo-impress {
-            width: 10rem;
-            height: 4rem;
+            width: 10em;
+            height: 4em;
 
             .logo_footer {
-                width: 10rem;
-                height: 3rem;
+                width: 10em;
+                height: 3em;
             }
         }
 
@@ -26,9 +26,9 @@ footer {
         }
 
         .social-footer {
-            width: 15rem;
+            width: 15em;
             img {
-                margin-right: 2rem;
+                margin-right: 2em;
             }
 
             .footer-nav {
