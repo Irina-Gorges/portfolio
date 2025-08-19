@@ -1,0 +1,150 @@
+@import "../../shared/mixins.scss";
+@import "../../../styles.scss";
+
+
+.content {
+    justify-content: space-between;
+    width: 100%;
+    margin: 100px 0px;
+    z-index: 2;
+
+    @media (max-width: 1270px) {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    @media (max-width: 750px) {
+        margin-top: 50px;
+        padding-left: 25px;
+    }
+
+    .link-mb {
+        a {
+            margin-top: 50px;
+            display: inline-block;
+            background-color: $green;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 23px;
+            margin-top: 50px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            transform: scale(0.94);
+
+            &:hover {
+                background-color: $violett;
+                transform: scale(1);
+                cursor: pointer;
+            }
+
+            @media (min-width: 1271px) {
+                display: none;
+            }
+
+            @media (min-width: 750px) {
+                display: none;
+                font-size: 16px;
+
+            }
+
+        }
+    }
+
+    .icons {
+        width: 40%;
+        display: flex;
+        justify-content: flex-start;
+        row-gap: 40px;
+        column-gap: 60px;
+        flex-wrap: wrap;
+
+        @media (max-width: 1270px) {
+            width: 100%;
+            justify-content: center;
+            padding-right: 100px;
+        }
+
+        @media (max-width: 750px) {
+            padding-right: 25px;
+        }
+    }
+
+    .myskills {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+
+        @media (max-width: 1270px) {
+            width: 100%;
+            margin-bottom: 100px;
+        }
+
+        .header {
+            display: flex;
+
+            align-items: center;
+            margin-bottom: 34px;
+            gap: 35px;
+
+            @media (max-width: 750px) {
+                gap: 10px;
+            }
+
+            h2 {
+                margin-bottom: 0;
+            }
+
+            .blueline {
+                background-color: $violett;
+                height: 4px;
+                width: 58px;
+
+                @media (max-width: 1270px) {
+                    height: 4px;
+                    width: 58px;
+                }
+            }
+        }
+
+        span {
+            padding-right: 100px;
+
+            @media (max-width: 750px) {
+                padding-right: 25px;
+            }
+        }
+
+
+        span {
+            text-align: right;
+            size: 16px;
+            line-height: 120%;
+            letter-spacing: 0%;
+        }
+
+        a {
+            display: inline-block;
+            background-color: $green;
+            border: none;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-size: 23px;
+            margin-top: 50px;
+            margin-right: 100px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            transform: scale(0.94);
+
+            &:hover {
+                background-color: $violett;
+                transform: scale(1);
+                cursor: pointer;
+            }
+
+            @media (max-width: 1270px) {
+                display: none;
+            }
+        }
+    }
+}

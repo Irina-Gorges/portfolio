@@ -1,0 +1,68 @@
+//colors
+$darkblue: #141d2f;
+$violett: #9747ff;
+$green: #70e61c;
+
+$header-height: 8dvh;
+$footer-height: 8dvh;
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-margin-top: 100px;
+    position: relative;
+    color: white;
+    text-decoration: none;
+    font-family: Poppins;
+}
+
+body {
+    background-color: $darkblue;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../public/assets/fonts/poppins-v23-latin-regular.woff2") format("woff2");
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 90px;
+    line-height: 120%;
+    letter-spacing: 0%;
+
+    @media (max-width: 750px) {
+        font-size: 45px;
+    }
+}
+
+header,
+main,
+section,
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    .content {
+        width: 100%;
+        max-width: 1920px;
+    }
+}
+
+section {
+    .content {
+        display: flex;
+    }
+}
+
+.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+}

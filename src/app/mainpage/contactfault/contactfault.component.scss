@@ -1,0 +1,103 @@
+@import "../../shared/mixins.scss";
+@import "../../../styles.scss";
+
+.content {
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-right: 100px;
+  z-index: 6;
+
+  .socialmedia {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 42px;
+
+    .left {
+      display: flex;
+      align-items: center;
+      gap: 42px;
+      flex-wrap: nowrap;
+    }
+
+    .iconrow {
+      display: flex;
+      gap: 42px;
+    }
+
+    .fault-line {
+      @media (max-width: 860px) {
+        width: 64px;
+      }
+    }
+
+    .iconimg {
+      display: block;
+      width: 30px;
+      transition: transform 0.2s ease;
+      transform-origin: left center;
+
+      &:hover {
+        transform: scale(1.33) translateX(5px);
+        cursor: pointer;
+      }
+    }
+
+    .email {
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: 23px;
+
+      @media (max-width: 1100px) {
+        display: none;
+      }
+    }
+  }
+
+  .scrolldown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    gap: 60px;
+    animation: jump 2s ease infinite;
+    cursor: pointer;
+
+    @media (max-width: 1100px) {
+      display: none;
+    }
+
+    span {
+      display: inline-block;
+      transform: rotate(90deg);
+      font-size: 23px;
+    }
+
+    img {
+      width: 24px;
+      height: 24px;
+      align-self: center;
+      cursor: pointer;
+    }
+
+    @keyframes jump {
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-30px);
+      }
+
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+  }
+}

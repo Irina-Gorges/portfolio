@@ -1,0 +1,271 @@
+@import "../../shared/mixins.scss";
+@import "../../../styles.scss";
+
+header {
+    background-color: $darkblue;
+    z-index: 10000;
+    width: 100%;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    filter: drop-shadow(3px 3px 5px rgba(22, 22, 22, 0.582));
+
+    .content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        padding: 0px 100px;
+
+        @media (max-width: 750px) {
+            padding: 37px 25px;
+        }
+
+        .logo {
+            height: 50px;
+        }
+
+        .menu {
+
+            @media (max-width: 871px) {
+                display: none;
+            }
+
+            ul {
+                display: flex;
+                align-items: center;
+                width: auto;
+                gap: 29px;
+                list-style-type: none;
+            }
+
+            a {
+                font-size: 23px;
+                font-weight: 400;
+                line-height: 120%;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: $green;
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: -4px;
+                    left: 0;
+                    width: 0%;
+                    height: 2px;
+                    background-color: $violett;
+                    transition: width 0.3s;
+                }
+
+                &.active-link {
+                    color: $green;
+
+                    &::after {
+                        width: 55px;
+                    }
+
+                }
+            }
+
+            .language {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                button {
+                    background-color: $darkblue;
+                    border-radius: 8px;
+                    border: solid 1px $green;
+                    padding: 5px;
+                    font-size: 16px;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $green;
+                    }
+
+                    &.active {
+                        background-color: $green;
+                    }
+                }
+            }
+        }
+
+        .burg-img {
+            width: 35px;
+            height: 35px;
+            background-image: url('../../../../public/assets/icons/burger-menu.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+
+            @media (min-width: 870px) {
+                display: none;
+            }
+
+            &.animate-icon {
+                animation: open 200ms steps(1, end) forwards;
+            }
+        }
+
+        .burger-menu {
+            pointer-events: none;
+            visibility: hidden;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 10001;
+            background-color: #141d2fe5;
+
+            transform: translateX(100%);
+            opacity: 0;
+            transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out, visibility 0s 0.4s;
+
+            &.slide-out {
+                transform: translateX(100%);
+                opacity: 0;
+                pointer-events: none;
+                visibility: hidden;
+                transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out, visibility 0s 0.4s;
+            }
+
+            &.open {
+                pointer-events: auto;
+                transform: translateX(0);
+                opacity: 1;
+                display: block;
+                visibility: visible;
+                transition: transform 0.4s ease-in-out, opacity 0.3s ease-in-out, visibility 0s;
+            }
+
+            .top {
+                height: 110px;
+                width: 100%;
+                background-color: $darkblue;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2px 25px;
+
+                .logo {
+                    height: 80px;
+                }
+
+                .close {
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                .animation {
+                    height: 35px;
+                    width: 35px;
+                    background-image: url("../../../../public/assets/icons/Close_Final.png");
+                    background-size: contain;
+                }
+
+                .animate-icon {
+                    animation-name: open;
+                    animation-duration: 200ms;
+                    animation-timing-function: steps(1, end);
+                    animation-fill-mode: forwards;
+                }
+
+
+                .language {
+                    display: flex;
+                    gap: 10px;
+
+                    button {
+                        background-color: $darkblue;
+                        border-radius: 10px;
+                        border: solid 1px $green;
+                        padding: 5px;
+                        font-size: 16px;
+
+                        &:hover {
+                            cursor: pointer;
+                            background-color: $green;
+                        }
+
+                        &.active {
+                            background-color: $green;
+                        }
+
+                    }
+                }
+            }
+
+            .links {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                padding-top: 80px;
+                width: 100%;
+                height: 100%;
+
+
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    list-style-type: none;
+                    font-size: 23px;
+                    gap: 29px;
+
+
+                    a {
+                        color: $violett;
+                    }
+                }
+            }
+        }
+    }
+}
+
+header.scrolled {
+    .menu a {
+        color: white;
+
+        &:hover {
+            color: $green;
+        }
+
+        &.active-link {
+            color: $green;
+        }
+    }
+}
+
+
+@keyframes open {
+    0% {
+        background-image: url("../../../../public/assets/icons/burger-menu.png");
+    }
+
+    ;
+
+    33% {
+        background-image: url("../../../../public/assets/icons/Open_Transition.png");
+    }
+
+    66% {
+        background-image: url("../../../../public/assets/icons/Close_Medum.png");
+    }
+
+    100% {
+        background-image: url("../../../../public/assets/icons/Close_Final.png");
+    }
+
+}

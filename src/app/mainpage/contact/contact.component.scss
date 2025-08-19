@@ -1,0 +1,86 @@
+@import "../../shared/mixins.scss";
+@import "../../../styles.scss";
+
+
+.content {
+    flex-direction: column;
+    margin-bottom: 100px;
+
+    .headline {
+        display: flex;
+        align-items: center;
+        margin-bottom: 50px;
+
+        @media (max-width: 750px) {
+            font-size: 32px;
+            gap: 0px;
+        }
+
+        .shortblueline {
+            background-color: $violett;
+            height: 4px;
+            width: 50px;
+            margin-right: 50px;
+
+            @media (max-width: 750px) {
+                margin-right: 10px;
+            }
+        }
+    }
+
+    .contactdiv {
+        display: flex;
+        justify-content: space-between;
+        padding: 0px 100px;
+        overflow: hidden;
+        align-items: flex-start;
+        transition: height 0.3s ease;
+
+        @media (max-width: 1210px) {
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        @media (max-width: 750px) {
+            padding: 0px 25px;
+        }
+
+
+        .contactleft {
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+
+            @media (min-width: 1921px) {
+                width: 50%;
+            }
+
+            @media (max-width: 1210px) {
+                width: 70%;
+                gap: 20px;
+            }
+
+            @media (max-width: 750px) {
+                width: 100%;
+            }
+
+            h4 {
+                font-weight: 700;
+                font-size: 32px;
+
+                @media (max-width: 750px) {
+                    font-size: 23px;
+                }
+
+            }
+        }
+    }
+
+    .contactform-wrapper {
+        max-height: 800px;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+}

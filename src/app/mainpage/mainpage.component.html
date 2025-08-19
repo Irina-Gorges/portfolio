@@ -1,0 +1,28 @@
+<main>
+    <div class="content">
+        <app-herosection ></app-herosection>
+        <app-contactfault></app-contactfault>
+        <app-aboutme></app-aboutme>
+        <app-myskills></app-myskills>
+        <app-portfolio></app-portfolio>
+        <app-contact></app-contact>
+
+
+        <img class="shadow_1" src="assets/images/shadow_hero.png" alt="">
+
+        <img class="curve" src="assets/images/curve_hero.png" alt="">
+
+        <img class="curve_mb" src="assets/images/curve_hero_mobile.png" alt="">
+
+        <img class="shadow_2" src="assets/images/Purple shadow 1.png" alt="" >
+
+        <img class="shadow_3" src="assets/images/Green shadow 2.png" alt="">
+
+        <img class="shadow_4" src="assets/images/Green shadow 4.png" alt="">
+
+        <img class="shadow_5" src="assets/images/Purple shadow 4.png" alt="">
+
+        <a class="go-up" href="#hero" [class.active-link]="activeSection === 'hero'" (click)="setActive('hero')"><div></div></a>
+
+    </div>
+</main>
