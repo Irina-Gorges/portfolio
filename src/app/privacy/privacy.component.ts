@@ -95,11 +95,11 @@ export class PrivacyComponent {
       this.text = lang === 'DE'
         ? {
           header: 'Datenschutzerklärung',
-          preambleTitle: 'Präambel',
+          preambleTitle: 'Vorwort',
           preambleParagraph1:
             'Mit der folgenden Datenschutzerklärung möchten wir Sie darüber aufklären, welche Arten Ihrer personenbezogenen Daten (nachfolgend auch kurz als "Daten" bezeichnet) wir zu welchen Zwecken und in welchem Umfang verarbeiten. Die Datenschutzerklärung gilt für alle von uns durchgeführten Verarbeitungen personenbezogener Daten, sowohl im Rahmen der Erbringung unserer Leistungen als auch insbesondere auf unseren Webseiten, in mobilen Applikationen sowie innerhalb externer Onlinepräsenzen, wie z. B. unserer Social-Media-Profile (nachfolgend zusammenfassend bezeichnet als "Onlineangebot").',
           preambleParagraph2: 'Die verwendeten Begriffe sind nicht geschlechtsspezifisch.',
-          versionDate: 'Stand: 26. Juni 2025',
+          versionDate: 'Stand: 19. August 2025',
           controllerTitle: 'Verantwortlicher',
           controllerAddress: 'Irina Gorges\nBachstr. 37\n37574 Einbeck',
           controllerEmail: 'irinagorges(at)live.de',
@@ -207,11 +207,11 @@ export class PrivacyComponent {
         }
         : {
           header: 'Privacy Policy',
-          preambleTitle: 'Preamble',
+          preambleTitle: 'Prolog',
           preambleParagraph1:
             'This privacy policy informs you about the types of personal data (hereinafter referred to as "data") we process, for what purposes, and to what extent. It applies to all data processing operations we carry out, both in the course of providing our services and across our websites, mobile apps, and external online presences such as social media profiles (hereafter collectively referred to as our "online offering").',
           preambleParagraph2: 'All terms used are intended to be gender-neutral.',
-          versionDate: 'Last updated: June 26, 2025',
+          versionDate: 'Last updated: August 19, 2025',
           controllerTitle: 'Controller',
           controllerAddress: 'Irina Gorges\nBachstr. 37\n37574 Einbeck',
           controllerEmail: 'irinagorges(at)live.de',

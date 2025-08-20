@@ -12,8 +12,8 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(
       routes,
-      withViewTransitions(), // optional
-      withEnabledBlockingInitialNavigation() // optional but helpful
+      withViewTransitions(),
+      withEnabledBlockingInitialNavigation() 
     ),
     provideHttpClient()
   ]
