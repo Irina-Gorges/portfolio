@@ -1,150 +1,142 @@
-import { Component } from '@angular/core';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  Validators,
-  FormGroup,
-  AbstractControl,
-  ValidationErrors
-} from '@angular/forms';
-import { NgClass } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component, inject } from '@angular/core';
+import { FormsModule, NgForm } from '@angular/forms';
 import { NgIf } from '@angular/common';
-import { LanguageService } from '../../../shared/services/language.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-
-function stricterEmailValidator(control: AbstractControl): ValidationErrors | null {
-  const email = control.value;
-  const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/i;
-  return regex.test(email) ? null : { email: true };
-}
 
 @Component({
   selector: 'app-contactform',
-  standalone: true,
-  imports: [ReactiveFormsModule, NgClass, NgIf],
+  imports: [FormsModule, NgIf],
   templateUrl: './contactform.component.html',
-  styleUrls: ['./contactform.component.scss'],
+  styleUrl: './contactform.component.scss',
 })
-
 export class ContactformComponent {
+  http = inject(HttpClient);
 
-  //#region variables
-  text = {
-    namePlaceholder: '',
-    nameError: '',
-    emailPlaceholder: '',
-    emailError: '',
-    messagePlaceholder: '',
-    messageError: '',
-    privacyLabel: '',
-    privacyPolicy: '',
-    privacyError: '',
-    submit: '',
-    success: '',
-    privacyText2: '',
+  lang: 'DE' | 'EN' = 'DE'; // Sprache kann nach Bedarf gesetzt werden
+  translate = {
+    DE: {
+      placeholders: {
+        name: 'Dein Name',
+        email: 'Deine E-Mail',
+        message: 'Deine Nachricht',
+      },
+      errors: {
+        name: 'Bitte gib deinen Namen ein',
+        email: 'Bitte gib eine gültige E-Mail ein',
+        message: 'Bitte gib eine Nachricht ein',
+      },
+      privacy: 'Bitte akzeptiere die Datenschutzbestimmungen',
+      privacyPolicy: 'Datenschutzrichtlinien',
+      submit: 'Nachricht senden :)',
+      success: 'Danke für deine Nachricht! Ich melde mich bald zurück!'
+    },
+    EN: {
+      placeholders: {
+        name: 'Your name',
+        email: 'Your email',
+        message: 'Your message',
+      },
+      errors: {
+        name: 'Please enter a name',
+        email: 'Please enter a valid email',
+        message: 'Please enter a message',
+      },
+      privacy: 'Please accept the privacy policy',
+      privacyPolicy: 'privacy policy',
+      submit: 'Send message :)',
+      success: "Thanks for your message! I'll respond soon!"
+    }
   };
 
-  contactForm: FormGroup;
-  
-  submissionSuccess = false;
-  //#endregion
+  contactData = {
+    name: '',
+    email: '',
+    message: '',
+    acceptedPrivacy: false,
+  };
+  formIsSent = false;
+  formHasError = false;
+  mailTest = false;
 
-  constructor(private fb: FormBuilder, private languageService: LanguageService, private http: HttpClient, private router: Router) {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email, stricterEmailValidator]],
-      message: ['', Validators.required],
-      privacy: [false, Validators.requiredTrue],
-    });
+  post = {
+    endPoint: 'https://irina-gorges.de/contact.php',
+    body: (payload: any) => JSON.stringify(payload),
+    options: {
+      headers: {
+        'Content-Type': 'text/plain',
+        responseType: 'text',
+      },
+    },
+  };
 
-    this.languageService.currentLang.subscribe((lang) => {
-      if (lang === 'DE') {
-        this.text = {
-          namePlaceholder: 'Dein Name',
-          nameError: 'Dein Name ist erforderlich',
-          emailPlaceholder: 'Deine E-Mail',
-          emailError: 'Deine E-Mail ist erforderlich',
-          messagePlaceholder: 'Deine Nachricht',
-          messageError: 'Bitte gib eine Nachricht ein.',
-          privacyLabel: 'Ich habe die',
-          privacyPolicy: 'Datenschutzrichtlinien',
-          privacyText2: 'gelesen und stimme der Bearbeitung meiner Daten zu.',
-          privacyError: 'Bitte akzeptiere die Datenschutzbestimmungen',
-          submit: 'Nachricht senden :)',
-          success: 'Danke für deine Nachricht! Ich melde mich bald zurück!'
-        };
-      } else {
-        this.text = {
-          namePlaceholder: 'Your name',
-          nameError: 'Your name is required',
-          emailPlaceholder: 'Your email',
-          emailError: 'Your email is required',
-          messagePlaceholder: 'Your message',
-          messageError: 'Your message is empty.',
-          privacyLabel: 'I`ve read the ',
-          privacyPolicy: 'Privacy policy',
-          privacyText2: 'and agree to the processing of my data as outlined.',
-          privacyError: 'Please accept the privacy policy',
-          submit: 'Send message :)',
-          success: "Thanks for your message! I'll respond soon!"
-        };
-      }
-    });
-  }
-
-
-
-  //#region onSubmit
-  onSubmit() {
-    if (!this.validateForm()) return;
-    const body = this.buildRequestBody();
-    const headers = this.createHeaders();
-    this.sendForm(body, headers);
-  }
-
-  private validateForm(): boolean {
-    if (this.contactForm.invalid) {
-      this.contactForm.markAllAsTouched();
-      return false;
+  getIconType(model: any): 'error' | 'success' | boolean {
+    if (model.touched) {
+      if (model.valid) return 'success';
+      if (model.invalid) return 'error';
     }
-    return true;
+    return false;
   }
 
-  private buildRequestBody(): string {
-    const formData = this.contactForm.value;
-    return new URLSearchParams({
-      name: formData.name,
-      email: formData.email,
-      message: formData.message
-    }).toString();
+  isInvalid(model: any): boolean {
+    return model.invalid && model.touched;
   }
 
-  private createHeaders(): HttpHeaders {
-    return new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
+  isValid(model: any): boolean {
+    return model.valid && model.touched;
+  }
+
+  getErrorMessage(model: any, field: 'name' | 'email' | 'message'): string | boolean {
+    if (!model.touched || model.valid) return false;
+    return this.translate[this.lang].errors[field];
+  }
+
+  // onSubmit(ngForm: NgForm) {
+  //     if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
+  //         this.http
+  //             .post(this.post.endPoint, this.post.body(this.contactData))
+  //             .subscribe({
+  //                 next: (response) => {
+  //                     ngForm.resetForm();
+  //                 },
+  //                 error: (error) => {
+  //                     console.error(error);
+  //                 },
+  //                 complete: () => console.info('send post complete'),
+  //             });
+  //     } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
+  //         ngForm.resetForm();
+  //     }
+  // }
+   onSubmit(ngForm: NgForm) {
+    if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
+      this.http
+        .post(this.post.endPoint, this.post.body(this.contactData))
+        .subscribe({
+          next: (response) => {
+            ngForm.resetForm();
+            this.formIsSent = true;
+          },
+          error: (error) => {
+            this.formHasError = true;
+          },
+          complete: () => {
+            setTimeout(() => {
+              this.formIsSent = false;
+              this.formHasError = false;
+            }, 5000);
+          },
+        });
+    } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
+      ngForm.resetForm();
+    }
+    // Beispiel: Zugriff auf Übersetzung für Erfolgsmeldung
+    // this.translate[this.lang].success
+  }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
     });
-  }
-
-  private sendForm(body: string, headers: HttpHeaders): void {
-    this.http.post('https://www.irina-gorges.de/contact.php', body, {
-      headers,
-      responseType: 'text'
-    }).subscribe({
-      next: () => this.handleSuccess()
-    });
-  }
-
-  private handleSuccess(): void {
-    this.submissionSuccess = true;
-    this.contactForm.reset();
-    setTimeout(() => this.submissionSuccess = false, 5000);
-  }
-  //#endregion
-
-  navigateToPrivacy() {
-    this.router.navigate(['/privacy']);
   }
 }
-
-

@@ -1,69 +1,104 @@
-<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+<section id="contact">
+    <div class="container-right">
+        <form (ngSubmit)="onSubmit(contactForm)" #contactForm="ngForm">
+            <!-- Name -->
+            <div class="required">
+                <div class="input-icon-wrapper">
+                    <label for="yname"></label>
+                    <input #nameModel="ngModel" [(ngModel)]="contactData.name" type="text" id="yname" name="name"
+                        [placeholder]="translate[lang].placeholders.name" required minlength="4"
+                        [class.error]="isInvalid(nameModel)" [class.success]="isValid(nameModel)" />
+                    <!-- Fehler-Icon -->
+                    <img *ngIf="getIconType(nameModel) === 'error'" src="assets/icons/error.png" alt="Error"
+                        class="icon-indicator" />
 
-    <div class="input-group" [ngClass]="{
-       'error': contactForm.get('name')?.invalid && contactForm.get('name')?.touched,
-       'success': contactForm.get('name')?.valid && contactForm.get('name')?.touched
-     }">
-        <input class="shortinput" type="text" placeholder="{{text.namePlaceholder}}" formControlName="name" />
-        <img *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
-            src="assets/icons/submit-needed.png" alt="error icon" class="error-icon" />
-        <img *ngIf="contactForm.get('name')?.valid && contactForm.get('name')?.touched"
-            src="assets/icons/submit-works.png" alt="valid icon" class="success-icon" />
-        <p class="error-message" [class.visible]="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-            {{text.nameError}}
-        </p>
+                    <!-- Erfolgs-Icon -->
+                    <img *ngIf="getIconType(nameModel) === 'success'" src="assets/icons/done.png" alt="Success"
+                        class="icon-indicator" />
+                </div>
+                <span *ngIf="getErrorMessage(nameModel, 'name')">
+                    {{ getErrorMessage(nameModel, 'name') }}
+                </span>
+            </div>
+
+            <!-- Email -->
+            <div class="required">
+                <div class="input-icon-wrapper">
+                    <label for="email"></label>
+                    <input #emailModel="ngModel" [(ngModel)]="contactData.email" type="email" id="email" name="email"
+                        [placeholder]="translate[lang].placeholders.email" required minlength="4"
+                        pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" [class.error]="isInvalid(emailModel)"
+                        [class.success]="isValid(emailModel)" />
+                    <!-- Fehler-Icon -->
+                    <img *ngIf="getIconType(emailModel) === 'error'" src="assets/icons/error.png" alt="Error"
+                        class="icon-indicator" />
+
+                    <!-- Erfolgs-Icon -->
+                    <img *ngIf="
+                                        getIconType(emailModel) === 'success'
+                                    " src="assets/icons/done.png" alt="Success" class="icon-indicator" />
+                </div>
+                <span *ngIf="getErrorMessage(emailModel, 'email')">
+                    {{ getErrorMessage(emailModel, 'email') }}
+                </span>
+            </div>
+
+            <!-- Message -->
+            <div class="required">
+                <div class="input-icon-wrapper">
+                    <label for="message"></label>
+                    <textarea #messageModel="ngModel" [(ngModel)]="contactData.message" id="message" name="message"
+                        [placeholder]="translate[lang].placeholders.message" style="height: 200px" required
+                        minlength="4" [class.error]="isInvalid(messageModel)"
+                        [class.success]="isValid(messageModel)"></textarea>
+                </div>
+                <span *ngIf="getErrorMessage(messageModel, 'message')">
+                    {{ getErrorMessage(messageModel, 'message') }}
+                </span>
+
+                <div class="required checkbox-privacy">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="privacy" name="privacy" [(ngModel)]="
+                                            contactData.acceptedPrivacy
+                                        " required />
+                        <span class="checkmark"></span>
+                        {{lang === 'DE' ? 'Ich habe die' : "I've read the"}}
+                        <a href="/privacy" target="_blank">
+                            {{translate[lang].privacyPolicy || 'privacy policy'}}
+                        </a>
+                        &nbsp;{{lang === 'DE' ? 'gelesen und stimme der Bearbeitung meiner Daten zu.' : 'and agree to
+                        the processing of my data as outlined.'}}
+                    </label>
+                    <span *ngIf="
+                                        contactForm.submitted &&
+                                        !contactData.acceptedPrivacy
+                                    " class="error-text">{{translate[lang].privacy}}</span>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="btn-formular">
+                <button type="submit" [disabled]="
+                                    !contactForm.valid ||
+                                    !contactData.acceptedPrivacy
+                                " [class.enabled-button]="
+                                    contactForm.valid &&
+                                    contactData.acceptedPrivacy
+                                " [class.disabled-button]="
+                                    !contactForm.valid ||
+                                    !contactData.acceptedPrivacy
+                                ">
+                    {{translate[lang].submit}}
+                </button>
+            </div>
+        </form>
+            <!-- Erfolgsmeldung -->
+            <div *ngIf="formIsSent" class="success-message">
+                {{translate[lang].success}}
+            </div>
+            <!-- Fehlermeldung -->
+            <div *ngIf="formHasError" class="error-message">
+                {{lang === 'DE' ? 'Fehler beim Senden der Nachricht. Bitte versuche es später erneut.' : 'Error sending message. Please try again later.'}}
+            </div>
     </div>
-
-    <div class="input-group" [ngClass]="{
-       'error': contactForm.get('email')?.invalid && contactForm.get('email')?.touched,
-       'success': contactForm.get('email')?.valid && contactForm.get('email')?.touched
-     }">
-        <input class="shortinput" type="email" placeholder="{{text.emailPlaceholder}}" formControlName="email" />
-        <img *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
-            src="assets/icons/submit-needed.png" alt="error icon" class="error-icon" />
-        <img *ngIf="contactForm.get('email')?.valid && contactForm.get('email')?.touched"
-            src="assets/icons/submit-works.png" alt="valid icon" class="success-icon" />
-        <p class="error-message"
-            [class.visible]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-            {{text.emailError}}
-        </p>
-    </div>
-
-    <div class="input-group" [ngClass]="{
-       'error': contactForm.get('message')?.invalid && contactForm.get('message')?.touched,
-       'success': contactForm.get('message')?.valid && contactForm.get('message')?.touched
-     }">
-        <textarea class="messageinput" placeholder="{{text.messagePlaceholder}}" formControlName="message"></textarea>
-        <img *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched"
-            src="assets/icons/submit-needed.png" alt="error icon" class="error-icon" />
-        <img *ngIf="contactForm.get('message')?.valid && contactForm.get('message')?.touched"
-            src="assets/icons/submit-works.png" alt="success icon" class="success-icon" />
-        <p class="error-message"
-            [class.visible]="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-            {{text.messageError}}
-        </p>
-    </div>
-
-    <div class="checkbox-group" [ngClass]="{
-  'error': contactForm.get('privacy')?.invalid && contactForm.get('privacy')?.touched
-}">
-        <input id="privacy" type="checkbox" class="check" formControlName="privacy" />
-        <label for="privacy" class="checkbox-label">
-            {{text.privacyLabel}}
-        </label>
-        <span class="privacy-link" (click)="navigateToPrivacy()" role="link">
-            {{ text.privacyPolicy }}
-        </span>
-        <span class="privacy-text-2">{{text.privacyText2}}</span>
-        <p class="error-message"
-            [class.visible]="contactForm.get('privacy')?.invalid && contactForm.get('privacy')?.touched">
-            {{text.privacyError}}
-        </p>
-    </div>
-
-    <button type="submit" [disabled]="contactForm.invalid">{{text.submit}}</button>
-
-    <p class="submit-success" *ngIf="submissionSuccess">
-        {{text.success}}
-    </p>
-</form>
+</section>
