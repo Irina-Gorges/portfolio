@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-contactform',
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule, NgIf, RouterModule],
   templateUrl: './contactform.component.html',
   styleUrl: './contactform.component.scss',
 })
@@ -21,14 +22,14 @@ export class ContactformComponent {
         message: 'Deine Nachricht',
       },
       errors: {
-        name: 'Bitte gib deinen Namen ein',
+        name: 'Bitte gib Deinen Namen ein',
         email: 'Bitte gib eine gültige E-Mail ein',
         message: 'Bitte gib eine Nachricht ein',
       },
       privacy: 'Bitte akzeptiere die Datenschutzbestimmungen',
       privacyPolicy: 'Datenschutzrichtlinien',
       submit: 'Nachricht senden :)',
-      success: 'Danke für deine Nachricht! Ich melde mich bald zurück!'
+      success: 'Danke für Deine Nachricht! Ich melde mich bald zurück!',
     },
     EN: {
       placeholders: {
@@ -44,8 +45,8 @@ export class ContactformComponent {
       privacy: 'Please accept the privacy policy',
       privacyPolicy: 'privacy policy',
       submit: 'Send message :)',
-      success: "Thanks for your message! I'll respond soon!"
-    }
+      success: "Thanks for your message! I'll respond soon!",
+    },
   };
 
   contactData = {
@@ -64,10 +65,23 @@ export class ContactformComponent {
     options: {
       headers: {
         'Content-Type': 'text/plain',
-        responseType: 'text',
       },
+      responseType: 'text' as 'json', // 'text' is used to handle the response as plain text
     },
   };
+
+  // Formulardaten aus localStorage laden
+  ngOnInit() {
+    const savedData = localStorage.getItem('contactFormData');
+    if (savedData) {
+      this.contactData = JSON.parse(savedData);
+    }
+  }
+
+  // Formulardaten speichern bei jeder Änderung
+  onInputChange() {
+    localStorage.setItem('contactFormData', JSON.stringify(this.contactData));
+  }
 
   getIconType(model: any): 'error' | 'success' | boolean {
     if (model.touched) {
@@ -85,36 +99,28 @@ export class ContactformComponent {
     return model.valid && model.touched;
   }
 
-  getErrorMessage(model: any, field: 'name' | 'email' | 'message'): string | boolean {
+  getErrorMessage(
+    model: any,
+    field: 'name' | 'email' | 'message'
+  ): string | boolean {
     if (!model.touched || model.valid) return false;
     return this.translate[this.lang].errors[field];
   }
 
-  // onSubmit(ngForm: NgForm) {
-  //     if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
-  //         this.http
-  //             .post(this.post.endPoint, this.post.body(this.contactData))
-  //             .subscribe({
-  //                 next: (response) => {
-  //                     ngForm.resetForm();
-  //                 },
-  //                 error: (error) => {
-  //                     console.error(error);
-  //                 },
-  //                 complete: () => console.info('send post complete'),
-  //             });
-  //     } else if (ngForm.submitted && ngForm.form.valid && this.mailTest) {
-  //         ngForm.resetForm();
-  //     }
-  // }
-   onSubmit(ngForm: NgForm) {
+  onSubmit(ngForm: NgForm) {
     if (ngForm.submitted && ngForm.form.valid && !this.mailTest) {
       this.http
-        .post(this.post.endPoint, this.post.body(this.contactData))
+        .post(
+          this.post.endPoint,
+          this.post.body(this.contactData),
+          this.post.options
+        )
         .subscribe({
           next: (response) => {
             ngForm.resetForm();
             this.formIsSent = true;
+            // Nach erfolgreichem Absenden localStorage leeren
+            localStorage.removeItem('contactFormData');
           },
           error: (error) => {
             this.formHasError = true;

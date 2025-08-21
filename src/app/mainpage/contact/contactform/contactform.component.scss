@@ -2,229 +2,231 @@
 @import "../../../shared/mixins.scss";
 
 section {
-    height: 100vh;
-  
-                .container-right {
-                    width: 100%;
+  height: 100vh;
 
-                    .success-message {
-                        color: #70e61c;
-                        font-size: 17px;
-                        text-align: center;
-                        margin-top: 20px;
-                        animation: fadeIn 0.4s ease-in;
-                    }
+  .container-right {
+    width: 100%;
 
-                    .error-message {
-                        color: #e61c40;
-                        font-size: 17px;
-                        text-align: center;
-                        margin-top: 20px;
-                        animation: fadeIn 0.4s ease-in;
-                    }
+    .success-message {
+      color: #70e61c;
+      font-size: 17px;
+      text-align: center;
+      margin-top: 15px;
+      animation: fadeIn 0.4s ease-in;
+    }
 
-                    @keyframes fadeIn {
-                        from {
-                            opacity: 0;
-                            transform: translateY(5px);
-                        }
-                        to {
-                            opacity: 1;
-                            transform: translateY(0);
-                        }
-                    }
-                    form {
-                        border-radius: 5px;
-                        span {
-                            font-weight: 200;
-                            font-size: 16px;
-                            color: #e61c40;
-                        }
+    .error-message {
+      color: #e61c40;
+      font-size: 17px;
+      text-align: center;
+      margin-top: 15px;
+      animation: fadeIn 0.4s ease-in;
+    }
 
-                        .input-icon-wrapper {
-                            position: relative;
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(5px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    form {
+      border-radius: 5px;
 
-                            input,
-                            select,
-                            textarea {
-                                width: 100%;
-                                padding: 12px;
-                                padding-right: 2.5em; // Platz für Icon
-                                border: 1px solid #9747ff;
-                                border-radius: 10px;
-                                box-sizing: border-box;
-                                margin-top: 6px;
-                                margin-bottom: 16px;
-                                resize: vertical;
-                                background-color: #141d2f;
-                                outline: none;
-                                transition: border-color 0.3s;
-                            }
+      span {
+        font-weight: 200;
+        font-size: 16px;
+        color: #e61c40;
+      }
 
-                            input:focus,
-                            textarea:focus,
-                            input:hover,
-                            textarea:hover {
-                                border: 1px solid #70e61c;
-                            }
+      .input-icon-wrapper {
+        position: relative;
 
-                            input.error,
-                            textarea.error {
-                                border: 1px solid #e61c40 !important;
-                            }
+        input,
+        select,
+        textarea {
+          width: 100%;
+          padding: 12px;
+          padding-right: 2.5em; // Platz für Icon
+          border: 1px solid #9747ff;
+          border-radius: 10px;
+          box-sizing: border-box;
+          margin-top: 16px;
+          margin-bottom: 6px;
+          resize: vertical;
+          background-color: #141d2f;
+          outline: none;
+          transition: border-color 0.3s;
+        }
 
-                            input.success,
-                            textarea.success {
-                                border: 1px solid #70e61c !important;
-                            }
+        input:focus,
+        textarea:focus,
+        input:hover,
+        textarea:hover {
+          border: 1px solid #70e61c;
+          background-color: #141d2f;
+        }
 
-                            .icon-indicator {
-                                position: absolute;
-                                right: 12px;
-                                top: 50%;
-                                transform: translateY(-50%);
-                                width: 20px;
-                                height: 20px;
-                                pointer-events: none;
-                            }
-                        }
+        input.error,
+        textarea.error {
+          border: 1px solid #e61c40 !important;
+          background-color: #141d2f;
+        }
 
-                        input[type="email"] {
-                            @extend input; // Reuse the general input styles
-                        }
+        input.success,
+        textarea.success {
+          border: 1px solid #70e61c !important;
+          background-color: #141d2f;
+        }
 
-                        /* Container der Checkbox */
-                        .custom-checkbox {
-                            cursor: pointer;
-                            position: relative;
-                            padding-left: 32px;
-                            font-size: 16px;
-                            font-weight: 300;
-                            user-select: none;
-                        }
+        .icon-indicator {
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 20px;
+          height: 20px;
+          pointer-events: none;
+        }
+      }
 
-                        /* Verstecke das native Checkbox-Eingabefeld */
-                        .custom-checkbox input[type="checkbox"] {
-                            position: absolute;
-                            opacity: 0;
-                            cursor: pointer;
-                            height: 0;
-                            width: 0;
-                        }
+      input[type="email"] {
+        @extend input; // Reuse the general input styles
+      }
 
-                        /* Gestalte die sichtbare Box */
-                        .custom-checkbox .checkmark {
-                            position: absolute;
-                            left: 0;
-                            height: 20px;
-                            width: 20px;
-                            border: 2px solid $green; /* Grüner Rand */
-                            background-color: transparent;
-                            transition: all 0.2s ease-in-out;
-                            box-sizing: border-box;
-                        }
+      /* Container der Checkbox */
+      .custom-checkbox {
+        cursor: pointer;
+        position: relative;
+        padding-left: 32px;
+        font-size: 16px;
+        font-weight: 300;
+        user-select: none;
+      }
 
-                        /* Haken anzeigen, wenn gecheckt */
-                        .custom-checkbox input:checked ~ .checkmark {
-                            _background-color: $green; /* Grüner Hintergrund */
-                            border-color: $green;
-                        }
+      /* Verstecke das native Checkbox-Eingabefeld */
+      .custom-checkbox input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
 
-                        /* Haken-Stil */
-                        .custom-checkbox .checkmark::after {
-                            content: "";
-                            position: absolute;
-                            display: none;
-                            left: 50%;
-                            top: 50%;
-                            width: 6px;
-                            height: 12px;
-                            border: solid $green;
-                            border-width: 0 2px 2px 0;
-                            transform: translate(-50%, -50%) rotate(45deg);
-                        }
+      /* Gestalte die sichtbare Box */
+      .custom-checkbox .checkmark {
+        position: absolute;
+        left: 0;
+        height: 20px;
+        width: 20px;
+        border: 2px solid $green; /* Grüner Rand */
+        background-color: transparent;
+        transition: all 0.2s ease-in-out;
+        box-sizing: border-box;
+      }
 
-                        /* Wenn gecheckt, zeige den Haken */
-                        .custom-checkbox input:checked ~ .checkmark::after {
-                            display: block;
-                            color: $green;
-                        }
+      /* Haken anzeigen, wenn gecheckt */
+      .custom-checkbox input:checked ~ .checkmark {
+        _background-color: $green; /* Grüner Hintergrund */
+        border-color: $green;
+      }
 
-                        /* Optional: Link-Stil anpassen */
-                        .custom-checkbox a {
-                            color: $violett;
-                            text-decoration: underline;
-                            margin-left: 4px;
-                        }
+      /* Haken-Stil */
+      .custom-checkbox .checkmark::after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 50%;
+        top: 50%;
+        width: 6px;
+        height: 12px;
+        border: solid $green;
+        border-width: 0 2px 2px 0;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
 
-                        .btn-formular {
-                            @include d-flex-aln-items-center;
+      /* Wenn gecheckt, zeige den Haken */
+      .custom-checkbox input:checked ~ .checkmark::after {
+        display: block;
+        color: $green;
+      }
 
-                            .enabled-button {
-                                margin-top: 25px;
-                                font-size: 28px;
-                                border-radius: 10px;
-                                border: none;
-                                padding: 15px 30px;
-                                background-color: $green;
-                                box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
-                                color: white;
-                                cursor: pointer;
-                            }
+      /* Optional: Link-Stil anpassen */
+      .custom-checkbox a {
+        color: $violett;
+        text-decoration: underline;
+        margin-left: 4px;
+      }
 
-                            .disabled-button {
-                                margin-top: 25px;
-                                font-size: 28px;
-                                border-radius: 10px;
-                                border: none;
-                                padding: 15px 30px;
-                                background-color: #b6b6b6;
-                                color: white;
-                                box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
-                                cursor: not-allowed;
-                            }
-                        }
-                    }
+      .btn-formular {
+        @include d-flex-aln-items-center;
 
-                    .scroll-up {
-                        display: flex;
-                        justify-content: end;
-                        padding: 3em 1em 3em 0;
+        .enabled-button {
+          margin-top: 25px;
+          font-size: 28px;
+          border-radius: 10px;
+          border: none;
+          padding: 15px 30px;
+          background-color: $green;
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
+          color: white;
+          cursor: pointer;
+        }
 
-                        #scrollUpBtn {
-                            position: relative;
-                            width: 38px;
-                            height: 38px;
-                            border: none;
-                            background: none;
-                            cursor: pointer;
+        .disabled-button {
+          margin-top: 25px;
+          font-size: 28px;
+          border-radius: 10px;
+          border: none;
+          padding: 15px 30px;
+          background-color: #b6b6b6;
+          color: white;
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
+          cursor: not-allowed;
+        }
+      }
+    }
 
-                            .default-img,
-                            .hover-img {
-                                position: absolute;
-                                width: 38px;
-                                height: 38px;
-                                transition: opacity 0.25s ease;
-                            }
+    .scroll-up {
+      display: flex;
+      justify-content: end;
+      padding: 3em 1em 3em 0;
 
-                            .default-img {
-                                opacity: 1;
-                            }
+      #scrollUpBtn {
+        position: relative;
+        width: 38px;
+        height: 38px;
+        border: none;
+        background: none;
+        cursor: pointer;
 
-                            .hover-img {
-                                opacity: 0;
-                            }
+        .default-img,
+        .hover-img {
+          position: absolute;
+          width: 38px;
+          height: 38px;
+          transition: opacity 0.25s ease;
+        }
 
-                            &:hover .default-img {
-                                opacity: 0;
-                            }
+        .default-img {
+          opacity: 1;
+        }
 
-                            &:hover .hover-img {
-                                opacity: 1;
-                            }
-                        }
-                    }
-                }
-            }
-        
+        .hover-img {
+          opacity: 0;
+        }
 
+        &:hover .default-img {
+          opacity: 0;
+        }
+
+        &:hover .hover-img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

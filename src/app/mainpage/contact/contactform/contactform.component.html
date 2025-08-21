@@ -5,9 +5,9 @@
             <div class="required">
                 <div class="input-icon-wrapper">
                     <label for="yname"></label>
-                    <input #nameModel="ngModel" [(ngModel)]="contactData.name" type="text" id="yname" name="name"
-                        [placeholder]="translate[lang].placeholders.name" required minlength="4"
-                        [class.error]="isInvalid(nameModel)" [class.success]="isValid(nameModel)" />
+                    <input #nameModel="ngModel" [(ngModel)]="contactData.name" (ngModelChange)="onInputChange()"
+                        type="text" id="yname" name="name" [placeholder]="translate[lang].placeholders.name" required
+                        minlength="4" [class.error]="isInvalid(nameModel)" [class.success]="isValid(nameModel)" />
                     <!-- Fehler-Icon -->
                     <img *ngIf="getIconType(nameModel) === 'error'" src="assets/icons/error.png" alt="Error"
                         class="icon-indicator" />
@@ -25,10 +25,10 @@
             <div class="required">
                 <div class="input-icon-wrapper">
                     <label for="email"></label>
-                    <input #emailModel="ngModel" [(ngModel)]="contactData.email" type="email" id="email" name="email"
-                        [placeholder]="translate[lang].placeholders.email" required minlength="4"
-                        pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" [class.error]="isInvalid(emailModel)"
-                        [class.success]="isValid(emailModel)" />
+                    <input #emailModel="ngModel" [(ngModel)]="contactData.email" (ngModelChange)="onInputChange()"
+                        type="email" id="email" name="email" [placeholder]="translate[lang].placeholders.email" required
+                        minlength="4" pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}"
+                        [class.error]="isInvalid(emailModel)" [class.success]="isValid(emailModel)" />
                     <!-- Fehler-Icon -->
                     <img *ngIf="getIconType(emailModel) === 'error'" src="assets/icons/error.png" alt="Error"
                         class="icon-indicator" />
@@ -47,7 +47,8 @@
             <div class="required">
                 <div class="input-icon-wrapper">
                     <label for="message"></label>
-                    <textarea #messageModel="ngModel" [(ngModel)]="contactData.message" id="message" name="message"
+                    <textarea #messageModel="ngModel" [(ngModel)]="contactData.message"
+                        (ngModelChange)="onInputChange()" id="message" name="message"
                         [placeholder]="translate[lang].placeholders.message" style="height: 200px" required
                         minlength="4" [class.error]="isInvalid(messageModel)"
                         [class.success]="isValid(messageModel)"></textarea>
@@ -58,12 +59,11 @@
 
                 <div class="required checkbox-privacy">
                     <label class="custom-checkbox">
-                        <input type="checkbox" id="privacy" name="privacy" [(ngModel)]="
-                                            contactData.acceptedPrivacy
-                                        " required />
+                        <input type="checkbox" id="privacy" name="privacy" [(ngModel)]="contactData.acceptedPrivacy"
+                            (ngModelChange)="onInputChange()" required />
                         <span class="checkmark"></span>
                         {{lang === 'DE' ? 'Ich habe die' : "I've read the"}}
-                        <a href="/privacy" target="_blank">
+                        <a [routerLink]="['/privacy']">
                             {{translate[lang].privacyPolicy || 'privacy policy'}}
                         </a>
                         &nbsp;{{lang === 'DE' ? 'gelesen und stimme der Bearbeitung meiner Daten zu.' : 'and agree to
@@ -92,13 +92,14 @@
                 </button>
             </div>
         </form>
-            <!-- Erfolgsmeldung -->
-            <div *ngIf="formIsSent" class="success-message">
-                {{translate[lang].success}}
-            </div>
-            <!-- Fehlermeldung -->
-            <div *ngIf="formHasError" class="error-message">
-                {{lang === 'DE' ? 'Fehler beim Senden der Nachricht. Bitte versuche es später erneut.' : 'Error sending message. Please try again later.'}}
-            </div>
+        <!-- Erfolgsmeldung -->
+        <div *ngIf="formIsSent" class="success-message">
+            {{translate[lang].success}}
+        </div>
+        <!-- Fehlermeldung -->
+        <div *ngIf="formHasError" class="error-message">
+            {{lang === 'DE' ? 'Fehler beim Senden der Nachricht. Bitte versuche es später erneut.' : 'Error sending
+            message. Please try again later.'}}
+        </div>
     </div>
 </section>
