@@ -115,12 +115,16 @@ export class HeaderComponent implements AfterViewInit, OnDestroy {
   }
 
   setActive(sectionId: string): void {
-    if (this.router.url !== '/') {
-      this.router.navigate(['/'], { fragment: sectionId });
+    if (sectionId === 'imprint') {
+      this.router.navigate(['/imprint']);
     } else {
-      this.scrollToSection(sectionId);
+      if (this.router.url !== '/') {
+        this.router.navigate(['/'], { fragment: sectionId });
+      } else {
+        this.scrollToSection(sectionId);
+      }
+      this.activeSection = sectionId;
     }
-    this.activeSection = sectionId;
   }
 
   @HostListener('window:scroll', [])

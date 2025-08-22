@@ -162,7 +162,8 @@ section {
       }
 
       .btn-formular {
-        @include d-flex-aln-items-center;
+        display: flex;
+        justify-content: center;
 
         .enabled-button {
           margin-top: 25px;
@@ -174,18 +175,29 @@ section {
           box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
           color: white;
           cursor: pointer;
+
+          @media (max-width: 320px) {
+            font-size: 24px;
+            padding: 8px 24px;
+          }
         }
 
         .disabled-button {
           margin-top: 25px;
-          font-size: 28px;
+          font-size: 26px;
           border-radius: 10px;
           border: none;
-          padding: 15px 30px;
+          padding: 10px 30px;
           background-color: #b6b6b6;
           color: white;
           box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.075);
           cursor: not-allowed;
+
+
+          @media (max-width: 320px) {
+            font-size: 24px;
+            padding: 8px 24px;
+          }
         }
       }
     }

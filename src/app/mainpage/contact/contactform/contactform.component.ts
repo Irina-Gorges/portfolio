@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { LanguageService } from '../../../shared/services/language.service';
 
 @Component({
   selector: 'app-contactform',
@@ -13,24 +14,9 @@ import { NgIf } from '@angular/common';
 export class ContactformComponent {
   http = inject(HttpClient);
 
-  lang: 'DE' | 'EN' = 'DE'; // Sprache kann nach Bedarf gesetzt werden
+  lang: 'DE' | 'EN' = 'EN';
+  private langSubscription: any;
   translate = {
-    DE: {
-      placeholders: {
-        name: 'Dein Name',
-        email: 'Deine E-Mail',
-        message: 'Deine Nachricht',
-      },
-      errors: {
-        name: 'Bitte gib Deinen Namen ein',
-        email: 'Bitte gib eine gültige E-Mail ein',
-        message: 'Bitte gib eine Nachricht ein',
-      },
-      privacy: 'Bitte akzeptiere die Datenschutzbestimmungen',
-      privacyPolicy: 'Datenschutzrichtlinien',
-      submit: 'Nachricht senden :)',
-      success: 'Danke für Deine Nachricht! Ich melde mich bald zurück!',
-    },
     EN: {
       placeholders: {
         name: 'Your name',
@@ -46,6 +32,22 @@ export class ContactformComponent {
       privacyPolicy: 'privacy policy',
       submit: 'Send message :)',
       success: "Thanks for your message! I'll respond soon!",
+    },
+    DE: {
+      placeholders: {
+        name: 'Dein Name',
+        email: 'Deine E-Mail',
+        message: 'Deine Nachricht',
+      },
+      errors: {
+        name: 'Bitte gib deinen Namen ein',
+        email: 'Bitte gib eine gültige E-Mail ein',
+        message: 'Bitte gib eine Nachricht ein',
+      },
+      privacy: 'Bitte akzeptiere die Datenschutzbestimmungen',
+      privacyPolicy: 'Datenschutzrichtlinien',
+      submit: 'Nachricht senden :)',
+      success: 'Danke für deine Nachricht! Ich melde mich bald zurück!',
     },
   };
 
@@ -71,10 +73,23 @@ export class ContactformComponent {
   };
 
   // Formulardaten aus localStorage laden
+  constructor(private languageService: LanguageService) {}
+
   ngOnInit() {
+    // Sprache abonnieren
+    this.langSubscription = this.languageService.currentLang.subscribe((lang) => {
+      this.lang = lang;
+    });
+    // Formulardaten laden
     const savedData = localStorage.getItem('contactFormData');
     if (savedData) {
       this.contactData = JSON.parse(savedData);
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.langSubscription) {
+      this.langSubscription.unsubscribe();
     }
   }
 

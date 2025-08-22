@@ -80,6 +80,14 @@
                 margin-left: 0;
                 margin-top: 240px;
             }
+
+            @media (max-width: 320px) {
+                width: 280px;
+                height: 380px;
+                margin-left: 0;
+                margin-top: 115px;
+            }
+
         }
     }
 
@@ -114,6 +122,11 @@
         @media (max-width: 750px) {
             justify-content: flex-start;
             width: 100%;
+        }
+
+        @media (max-width: 320px) {
+            width: 100%;
+            bottom: 80px;
         }
 
         .namesection {
